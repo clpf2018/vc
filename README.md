@@ -1,5 +1,6 @@
-# vc
-Projet mode open source pour les auditeurs du cycle C informatique Cnam Liban GLG204 et SMB215
+# Projet mode open source pour les auditeurs du cycle C informatique Cnam Liban GLG204 et SMB215
+
+## préparation et consignes initiales
 
 Nous travaillerons presque exclusivement avec la plateforme github pour la gestion des projets (tâches, documentations, etc...) et la gestion des logiciels (code source)
 
