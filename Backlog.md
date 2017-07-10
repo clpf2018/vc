@@ -1,8 +1,6 @@
-Lundi 10 Juillet 2017
-Dr. Pascal Fares
 Projet C2 :  Gestion de Stock d’une entreprise « X »
-SMB215 – GLG204
-Contributeurs (Par Order Alphabétique) :
+
+# Contributeurs (Par Order Alphabétique) :
 1. Abdel Majid Nadar « 10215f » 
 2. Ali Chreif « 7880 »
 3. Ali Younes « 9902 » 
@@ -13,26 +11,29 @@ Contributeurs (Par Order Alphabétique) :
 8. Khalil Bsaibes « 726z »
 9. Mike Rmaily « 6504f » 
 10. Mohamed Faour « 3141f »
-Notre projet consiste à faire un système pour la gestion de stock d’une
+
+ce projet consiste à faire un système pour la gestion de stock d’une
 entreprise « X ».
 On a pris comme étude l’entreprise « Moustache Lebanon » puisqu’elle est
 une grande entreprise, ayant plusieurs branches, et son stock est en
 mouvement fréquent.
 Dans cette étude, on a différents éléments qu’on doit s’occuper de :
-1- Biens :
+
+## 1- Biens :
 « Ce bien possède différents critères : code, type, taille, Brand, saison,
 etc. »
- Création d’un bien :
+
+### Création d’un bien :
 « Comme les propriétaires de l’entreprise sont eux qui importent les
 différents produits, on n’a pas une étape d’ordre ou de fabrication »
- Créer un bien « cela est fait chaque saison ».
- Détruire un bien :
+ Créer un bien « cela est fait chaque saison ».
+ Détruire un bien :
 « Les biens ne seront détruits de la base de données que si leur
 quantité est à 0. »
 « Les biens ne sont pas donnés, mais transmis dans un magasin ayant
 tous les anciens biens : Outlet »
- Vendre un bien.
- Un bien totalement consommé « Quantité en stock est à 0 »
+ Vendre un bien.
+ Un bien totalement consommé « Quantité en stock est à 0 »
  La vie d’un bien :
 « Un bien, lors de son importation ; sera transmis directement dans le
 stock. Après vérification des biens reçus, les biens seront transmis
@@ -46,7 +47,8 @@ entre les différentes branches, en cas de besoins. »
 « Cette étape est utilisé en cas de déplacement des biens entre le
 stock et les branches, ou bien entre branches. »
  Connaitre la position d’un bien.
-2- Supplier :
+
+## 2- Supplier :
 « Les fournisseurs dans cette entreprise sont les brands »
  Création d’un fournisseur :
 « Cela est fait une seule fois dans le programme avec une possibilité
