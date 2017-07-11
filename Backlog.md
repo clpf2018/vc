@@ -53,12 +53,12 @@ stock et les branches, ou bien entre branches. »
  Création d’un fournisseur :
 « Cela est fait une seule fois dans le programme avec une possibilité
 d’ajouter des nouveaux en cas de besoins »
-3- Stock :
+## 3- Stock :
 « Apres l’importation des biens, ils seront transmis dans le stock. Après
 vérification, les biens avec leurs quantités seront préparés pour chaque
 branche. Ensuite, ils seront envoyés vers chaque branche comme
 prévu. »
-4- Branche :
+## 4- Branche :
 « Les biens seront transmis du stock vers les branches. Chaque branche
 fait enregistrer les biens reçus. A ce moment, toutes les actions sur les
 biens, se passent dans les branches ».
