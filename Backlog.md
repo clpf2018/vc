@@ -26,31 +26,31 @@ etc. »
 ### Création d’un bien :
 « Comme les propriétaires de l’entreprise sont eux qui importent les
 différents produits, on n’a pas une étape d’ordre ou de fabrication »
- Créer un bien « cela est fait chaque saison ».
- Détruire un bien :
+ ***Créer un bien.*** « cela est fait chaque saison ».
+### Détruire un bien :
 « Les biens ne seront détruits de la base de données que si leur
 quantité est à 0. »
 « Les biens ne sont pas donnés, mais transmis dans un magasin ayant
 tous les anciens biens : Outlet »
- Vendre un bien.
+ ***Vendre un bien.***
  Un bien totalement consommé « Quantité en stock est à 0 »
- La vie d’un bien :
+### La vie d’un bien :
 « Un bien, lors de son importation ; sera transmis directement dans le
 stock. Après vérification des biens reçus, les biens seront transmis
 dans les différents branches en suivant le critère : Brand. Or, la
 branche principale contient tous les Brands. On peut prêter un bien
 entre les différentes branches, en cas de besoins. »
- Réception d’un bien et le placer dans le stock.
- Déplacer le bien vers les différentes branches.
- Prêter un bien d’une branche à une autre.
- Suivre un bien :
+***Réception d’un bien et le placer dans le stock.***
+***Déplacer le bien vers les différentes branches.***
+***Prêter un bien d’une branche à une autre.***
+***Suivre un bien :***
 « Cette étape est utilisé en cas de déplacement des biens entre le
 stock et les branches, ou bien entre branches. »
- Connaitre la position d’un bien.
+***Connaitre la position d’un bien.***
 
 ## 2- Supplier :
 « Les fournisseurs dans cette entreprise sont les brands »
- Création d’un fournisseur :
+### Création d’un fournisseur :
 « Cela est fait une seule fois dans le programme avec une possibilité
 d’ajouter des nouveaux en cas de besoins »
 ## 3- Stock :
