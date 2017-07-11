@@ -1,7 +1,5 @@
 
-/** 
-* Fait par jad gerges
-*/
+/**  Fait par jad gerges */
 
 •	On a 3 type d’utilisateurs: 
 o	Coordinateur 
