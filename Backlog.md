@@ -26,6 +26,7 @@ etc. »
 ### Création d’un bien :
 « Comme les propriétaires de l’entreprise sont eux qui importent les
 différents produits, on n’a pas une étape d’ordre ou de fabrication »
+
  ***Créer un bien.*** « cela est fait chaque saison ».
 ### Détruire un bien :
 « Les biens ne seront détruits de la base de données que si leur
@@ -41,8 +42,11 @@ dans les différents branches en suivant le critère : Brand. Or, la
 branche principale contient tous les Brands. On peut prêter un bien
 entre les différentes branches, en cas de besoins. »
 ***Réception d’un bien et le placer dans le stock.***
+
 ***Déplacer le bien vers les différentes branches.***
+
 ***Prêter un bien d’une branche à une autre.***
+
 ***Suivre un bien :***
 « Cette étape est utilisé en cas de déplacement des biens entre le
 stock et les branches, ou bien entre branches. »
