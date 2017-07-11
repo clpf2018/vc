@@ -1,4 +1,4 @@
-# Backlog GSB (Gestion et Suivi de Bien)
+# Backlog GSB (Gestion et Suivi de Bien).
 
 1. Créer un bien
 
