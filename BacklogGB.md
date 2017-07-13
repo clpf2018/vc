@@ -11,10 +11,13 @@ o	Gestionnaire de l'entrepôt.
 1.	Créer un bien
 1.1.	Le gestionnaire d'inventaire est responsable de la création d'éléments dans le système. Chaque article a un code, une description, un code à barres, un coût, un prix, une quantité, une durée de conservation, place_dans_entrepot {numero_de_ligne, étagère, direction}
 
+(NEW) 1.2 Internal Transfer: the inventory manager perform an internal transfer to the warehouses by usin the shipping orders 
+	Every shipping order contains array[Warehouseid +Array of articles],once the shippement order is submitted , the inventory maager have to organize the schedule of the shipping usig the Picking waves(decide the priorities).	
+
 2.	Receptionner un bien et le placer dans un lieu
 2.1.	Lorsque les articles sont reçus dans l'entrepôt, le gestionnaire d'entrepôt doit faire un scan de code à barres pour savoir  place_dans_entrepot des objets reçus afin de les remplirs.
 2.2.	Le gestionnaire de l'entrepôt doit entrer le code de l'élément dans le système et la description de l'article et la quantité reçue.
-2.3.	Si l'élément reçu n'existe pas, ils doivent retourner à (1. Cree un bien)
+2.3.	Si l'élément reçu n'existe pas, ils doivent retourner à (1. Cree un bien) by request to the invenr managger.++
 
 
 3.	Promotion sur un bien (entrepôt virtuelle)
