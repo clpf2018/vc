@@ -49,7 +49,7 @@ stock et les branches, ou bien entre branches. »
 #### *Connaitre la position d’un bien.*
 
 ## 2- Supplier :
-« Les fournisseurs dans cette entreprise sont les brands »
+« Les fournisseurs dans cette entreprise sont ceux qui importent les Brands, chaque fournisseurs peut importer plusieurs Brands »
 ### Création d’un fournisseur :
 « Cela est fait une seule fois dans le programme avec une possibilité
 d’ajouter des nouveaux en cas de besoins »
