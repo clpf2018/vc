@@ -32,4 +32,4 @@ OriginalPrice | SellingPrice | ***Brand*** | Season  | Location | location: Bran
 
 ## Stock
 CodeSt | TelSt | AddressSt | StatusSt  | CreationDateSt  | CreationUserSt|
--------|-------|-----------|- -------- | --------------- | --------------|
+-------|-------|-----------|  -------- | --------------- | --------------|
