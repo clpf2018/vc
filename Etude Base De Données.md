@@ -3,8 +3,11 @@ CodeBr | NameBr	| TelBr	| AddressBr |
 -------|------- |-------|-----------|
 
 ## Supplier
-CodeSup | NameSup | ***Brands*** | TelSup | AddressSup | EmailSup | chaque supplier peut avoir plusieurs brands |
---------| --------| -------------| -------| ---------- | -------- | --------------------------------------------|
+CodeSup | NameSup | ***Brands*** | TelSup | AddressSup | EmailSup | StatusSup | CreationDateSup | CreationUser | 
+--------| --------| -------------| -------| ---------- | -------- | --------- | --------------- | ------------ |
+
+ chaque supplier peut avoir plusieurs brands 
+|--------------------------------------------|
 
 ## Brand
 CodeBrd | NameBrd | ***Supplier*** | chaque Brand concerne un seul supplier |
