@@ -13,7 +13,7 @@ StatusSup(A/I) | CreationDateSup | CreationUserSup |
 |--------------------------------------------|
 
 ## Brand
-  | NameBrd | ***Supplier*** | StatusBrd(A/I)| CreationDateBrd | CreationUserBrd |chaque Brand concerne un seul supplier  |
+CodeBrd | NameBrd | ***Supplier*** | StatusBrd(A/I)| CreationDateBrd | CreationUserBrd |chaque Brand concerne un seul supplier  |
 --------|---------|----------------|-------------- | --------------- | --------------  |----------------------------------------|
 
 ## Client
@@ -24,7 +24,6 @@ CreationDateClt | CreationUserClt |
 --------------- | --------------- |
 
 
-
 ## Product
 CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr(A/I)  | 
 -------|-----------|--------|--------|----------|--------------   | 
@@ -33,7 +32,7 @@ CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | CreationDatePr  | Creat
 --------------|--------------|-------------|--------   | --------------- | --------------- |
 
 
-## Transaction
+## Transaction(Debit in Stock ,Credit Out Stock)
 TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionDbCr |
 --------------| --------------- | --------------- | ------------- | --------------- |
 
@@ -41,7 +40,7 @@ CodePr | CodeBr | CodeSup   |  CodeBrd     | CreationDateSt  | CreationUserSt 
 -----  |------- |-----------|  --------    | --------------  | ---------------| 
 
 
-## ProductBranchQty
+## ProductBranchQty (this table will be fill depends trigger on transaction Table (Debit Or credit)
 
 CodePr | CodeBr   | QtyPr |
 ------ | -------- | ----- |
