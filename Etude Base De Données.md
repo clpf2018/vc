@@ -5,6 +5,7 @@ CodeBr | NameBr	| TelBr	| AddressBr |
 ## Supplier
 CodeSup | NameSup | ***Brands*** | TelSup | MobSup     | AddressSup | EmailSup | StatusSup(Active/Inactive) |
 --------| --------| -------------| -------| ---------- | ---------- | -------- | -------------------------- | 
+
 StatusSup(A/I) | CreationDateSup | CreationUserSup |
 ---------------| --------------- | --------------  |
 
@@ -18,6 +19,7 @@ CodeBrd | NameBrd | ***Supplier*** | StatusBrd(A/I)| CreationDateBrd | CreationU
 ## Client
 CodeClt | NameClt | TelClt | MobClt   |TitleClt | CatClt     | AddressClt | EmailClt | StatusClt(Active/Inactive) | SendSms(Y/N) |
 --------|---------|--------| -------- | ------  | ---------- | ---------- | -------- | -------------------------  | ------------ |
+
 CreationDateClt | CreationUserClt | 
 --------------- | --------------- |
 
