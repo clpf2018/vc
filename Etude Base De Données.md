@@ -45,7 +45,7 @@ TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionD
 --------------| --------------- | --------------- | ------------- | --------------- |
 
 CodePr | CodeBr | CodeSupBrand     | CreationDateSt  | CreationUserSt |
------  |------- |----------------- |  -----------    | --------------  | ---------------| 
+-----  |------- |----------------- |  -----------    | -------------- | 
 
 
 ## ProductBranchQty (this table will be fill depends trigger on transaction Table (Debit Or credit)
