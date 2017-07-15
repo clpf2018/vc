@@ -6,8 +6,8 @@ CodeBr | NameBr	| TelBr	| AddressBr |
 CodeSup | NameSup | ***Brands*** | TelSup | MobSup     | AddressSup | EmailSup | StatusSup(Active/Inactive) |
 --------| --------| -------------| -------| ---------- | ---------- | -------- | -------------------------- | 
 
-StatusSup(A/I) | CreationDateSup | CreationUserSup |
----------------| --------------- | --------------  |
+CountrySup     |StatusSup(A/I) | CreationDateSup | CreationUserSup |
+---------------|---------------| --------------- | --------------  |
 
  chaque supplier peut avoir plusieurs brands 
 |--------------------------------------------|
@@ -25,8 +25,8 @@ CreationDateClt | CreationUserClt |
 
 
 ## Product
-CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr(A/I)  | 
--------|-----------|--------|--------|----------|--------------   | 
+CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr(A/I)  | MadeInPr | CodeBrd |
+-------|-----------|--------|--------|----------|--------------   | -------- | ------- |
 
 CostPrice     | SellingPrice |  CodeSup    | CodeBrd     | SeasonPr        | CreationDatePr  | CreationUserPr  | 
 --------------|--------------|-------------|  --------   | --------------- | --------------- | ----------------|
