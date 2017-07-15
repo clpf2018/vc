@@ -40,7 +40,7 @@ CostPrice     | SellingPrice |  CodeSupBrand     | SeasonPr        | CreationDat
 --------------|--------------|-----------------  |  --------       | --------------- | --------------- | 
 
 
-## Transaction(Debit in Stock ,Credit Out Stock)
+## Transaction (Debit in Stock ,Credit Out Stock)
 TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionDbCr |
 --------------| --------------- | --------------- | ------------- | --------------- |
 
