@@ -21,12 +21,12 @@ CodeClt | NameClt | TelClt | CatClt | MobClt     | AddressClt | EmailClt | Statu
 | -------------------------------------------------------------------  |
 
 ## Stock
-CodeSt | TelSt | AddressSt |
--------|-------|-----------|
+CodeSt | TelSt | AddressSt | StatusSt  | CreationDateSt  | CreationUserSt  | 
+-------|-------|-----------|- -------- | --------------- | --------------  |
 
 ## Product
-CodePr | BarCodePr | NamePr | TypePr | FamilyPr | QuantityPr |
--------|-----------|--------|--------|----------|------------|
+CodePr | BarCodePr | NamePr | TypePr | FamilyPr | QuantityPr |StatusPr  | CreationDatePr  | CreationUserPr  | 
+-------|-----------|--------|--------|----------|------------|--------- | --------------- | --------------- |
 
 OriginalPrice | SellingPrice | ***Brand*** | Season | Status | Location | location: Branch; Status: Available or no | 
 --------------|--------------|-------------|--------|--------|----------| ------------------------------------------|
