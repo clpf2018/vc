@@ -22,7 +22,6 @@ CodeSt | TelSt | AddressSt |
 CodePr | BarCodePr | NamePr | TypePr | FamilyPr | QuantityPr |
 -------|-----------|--------|--------|----------|------------|
 
-OriginalPrice | SellingPrice | ***Brand*** | Season | Status | Location | 
---------------|--------------|-------------|--------|--------|----------| 
-location: Branch; Status: Available or no |
-------------------------------------------|
+OriginalPrice | SellingPrice | ***Brand*** | Season | Status | Location | location: Branch; Status: Available or no | 
+--------------|--------------|-------------|--------|--------|----------|------------------------------------------|
+
