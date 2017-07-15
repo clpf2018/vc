@@ -5,8 +5,8 @@ CodeBr | NameBr	| TelBr	| AddressBr |
 ## Supplier
 CodeSup | NameSup | ***Brands*** | TelSup | MobSup     | AddressSup | EmailSup | StatusSup(Active/Inactive) |
 --------| --------| -------------| -------| ---------- | ---------- | -------- | -------------------------- | 
-| CreationDateSup | CreationUserSup |
-| --------------- | --------------  |
+StatusSup(A/I) | CreationDateSup | CreationUserSup |
+|--------------| --------------- | --------------  |
 
  chaque supplier peut avoir plusieurs brands 
 |--------------------------------------------|
