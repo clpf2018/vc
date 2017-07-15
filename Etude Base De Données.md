@@ -23,15 +23,15 @@ CodeClt | NameClt | TelClt | MobClt   |TitleClt | CatClt     | AddressClt | Emai
 
 
 ## Product
-CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr  | CreationDatePr  | CreationUserPr  | 
--------|-----------|--------|--------|----------|---------   | --------------- | --------------- |
+CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr  | 
+-------|-----------|--------|--------|----------|---------   | 
 
-CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | 
---------------|--------------|-------------|--------   |
+CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | CreationDatePr  | CreationUserPr  | 
+--------------|--------------|-------------|--------   | --------------- | --------------- |
 
 ## ProductQtyLocation
-CodePr | QtyPr | Location |
------- | ----- | -------- |
+CodePr | Location | QtyPr |
+------ | -------- | ----- |
 
 ## Stock
 CodeSt | TelSt | AddressSt | StatusSt  | CreationDateSt  | CreationUserSt|
