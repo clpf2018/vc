@@ -33,11 +33,6 @@ CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | CreationDatePr  | Creat
 --------------|--------------|-------------|--------   | --------------- | --------------- |
 
 
-
-## Stock
-CodeSt | TelSt | AddressSt | StatusSt(A/I)  | CreationDateSt  | CreationUserSt|
--------|-------|-----------|  --------      | --------------- | --------------|
-
 ## Transaction
 TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionDbCr |
 --------------| --------------- | --------------- | ------------- | --------------- |
