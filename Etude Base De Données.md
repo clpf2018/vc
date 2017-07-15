@@ -29,3 +29,7 @@ CodePr | BarCodePr | NamePr | TypePr | FamilyPr | QuantityPr |StatusPr  | Creati
 OriginalPrice | SellingPrice | ***Brand*** | Season  | Location | location: Branch; Status: Available or no | 
 --------------|--------------|-------------|-------- |----------| ------------------------------------------|
 
+
+## Stock
+CodeSt | TelSt | AddressSt | StatusSt  | CreationDateSt  | CreationUserSt  |
+-------|-------|-----------|- -------- | --------------- | --------------  |
