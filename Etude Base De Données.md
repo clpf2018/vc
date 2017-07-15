@@ -28,8 +28,8 @@ CreationDateClt | CreationUserClt |
 CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr(A/I)  | 
 -------|-----------|--------|--------|----------|--------------   | 
 
-CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | CreationDatePr  | CreationUserPr  | 
---------------|--------------|-------------|--------   | --------------- | --------------- |
+CostPrice     | SellingPrice |  CodeSup    | CodeBrd     | SeasonPr        | CreationDatePr  | CreationUserPr  | 
+--------------|--------------|-------------|  --------   | --------------- | --------------- | ----------------|
 
 
 ## Transaction(Debit in Stock ,Credit Out Stock)
