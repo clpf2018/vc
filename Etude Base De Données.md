@@ -10,12 +10,12 @@ CodeSup | NameSup | ***Brands*** | TelSup | MobSup     | AddressSup | EmailSup |
 |--------------------------------------------|
 
 ## Brand
-CodeBrd | NameBrd | ***Supplier*** | chaque Brand concerne un seul supplier |
---------|---------|----------------|----------------------------------------|
+CodeBrd | NameBrd | ***Supplier*** | StatusBrd | CreationDateBrd | CreationUserBrd |chaque Brand concerne un seul supplier  |
+--------|---------|----------------|---------  | --------------- | --------------  |----------------------------------------|
 
 ## Client
-CodeClt | NameClt | TelClt | TitleClt | CatClt | MobClt     | AddressClt | EmailClt | StatusClt | CreationDateClt | CreationUserClt | 
---------|---------|--------| -------- | ------ | ---------- | ---------- | -------- | --------- | --------------- | --------------- |
+CodeClt | NameClt | TelClt | MobClt   |TitleClt | CatClt     | AddressClt | EmailClt | StatusClt | CreationDateClt | CreationUserClt | 
+--------|---------|--------| -------- | ------  | ---------- | ---------- | -------- | --------- | --------------- | --------------- |
 
 | Cette entité est necessaire en cas d'envoye de message de ***sale*** |
 | -------------------------------------------------------------------  |
@@ -23,12 +23,15 @@ CodeClt | NameClt | TelClt | TitleClt | CatClt | MobClt     | AddressClt | Email
 
 
 ## Product
-CodePr | BarCodePr | NamePr | TypePr | FamilyPr | QuantityPr |StatusPr  | CreationDatePr  | CreationUserPr  | 
--------|-----------|--------|--------|----------|------------|--------- | --------------- | --------------- |
+CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr  | CreationDatePr  | CreationUserPr  | 
+-------|-----------|--------|--------|----------|---------   | --------------- | --------------- |
 
-OriginalPrice | SellingPrice | ***Brand*** | Season  | Location | location: Branch; Status: Available or no | 
---------------|--------------|-------------|-------- |----------| ------------------------------------------|
+CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | 
+--------------|--------------|-------------|--------   |
 
+## ProductQtyLocation
+CodePr | QtyPr | Location |
+------ | ----- | -------- |
 
 ## Stock
 CodeSt | TelSt | AddressSt | StatusSt  | CreationDateSt  | CreationUserSt|
