@@ -30,8 +30,9 @@ CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | CreationDatePr  | Creat
 --------------|--------------|-------------|--------   | --------------- | --------------- |
 
 ## ProductBranchQty
------- | -------- | ----- |
+
 CodePr | CodeBr   | QtyPr |
+------ | -------- | ----- |
 
 
 ## Stock
