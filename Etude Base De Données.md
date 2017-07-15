@@ -20,9 +20,7 @@ CodeClt | NameClt | TelClt | CatClt | MobClt     | AddressClt | EmailClt | Statu
 | Cette entité est necessaire en cas d'envoye de message de ***sale*** |
 | -------------------------------------------------------------------  |
 
-## Stock
-CodeSt | TelSt | AddressSt | StatusSt  | CreationDateSt  | CreationUserSt  |
--------|-------|-----------|- -------- | --------------- | --------------  |
+
 
 ## Product
 CodePr | BarCodePr | NamePr | TypePr | FamilyPr | QuantityPr |StatusPr  | CreationDatePr  | CreationUserPr  | 
