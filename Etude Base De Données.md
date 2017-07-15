@@ -29,8 +29,8 @@ CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr  |
 CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | CreationDatePr  | CreationUserPr  | 
 --------------|--------------|-------------|--------   | --------------- | --------------- |
 
-## ProductQtyLocation
-CodePr | Location | QtyPr |
+## ProductBranchQty
+CodePr | CodeBr   | QtyPr |
 ------ | -------- | ----- |
 
 ## Stock
