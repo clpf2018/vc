@@ -14,8 +14,8 @@ CodeBrd | NameBrd | ***Supplier*** | chaque Brand concerne un seul supplier |
 --------|---------|----------------|----------------------------------------|
 
 ## Client
-CodeClt | NameClt | TelClt | CatClt | MobClt     | AddressClt | EmailClt | StatusClt | CreationDateClt | CreationUserClt | 
---------|---------|--------| ------ | ---------- | ---------- | -------- | --------- | --------------- | --------------- |
+CodeClt | NameClt | TelClt | TitleClt | CatClt | MobClt     | AddressClt | EmailClt | StatusClt | CreationDateClt | CreationUserClt | 
+--------|---------|--------| -------- | ------ | ---------- | ---------- | -------- | --------- | --------------- | --------------- |
 
 | Cette entité est necessaire en cas d'envoye de message de ***sale*** |
 | -------------------------------------------------------------------  |
