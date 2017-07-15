@@ -3,18 +3,26 @@ CodeBr | NameBr	| TelBr	| AddressBr |
 -------|------- |-------|-----------|
 
 ## Supplier
-CodeSup | NameSup | ***Brands*** | TelSup | MobSup     | AddressSup | EmailSup | StatusSup(Active/Inactive) |
---------| --------| -------------| -------| ---------- | ---------- | -------- | -------------------------- | 
+CodeSup | NameSup |  TelSup | MobSup     | AddressSup | EmailSup | StatusSup(Active/Inactive) |
+--------| --------|  -------| ---------- | ---------- | -------- | -------------------------- | 
 
 CountrySup     |StatusSup(A/I) | CreationDateSup | CreationUserSup |
 ---------------|---------------| --------------- | --------------  |
 
- chaque supplier peut avoir plusieurs brands 
-|--------------------------------------------|
-
+ 
 ## Brand
 CodeBrd | NameBrd | ***Supplier*** | StatusBrd(A/I)| CreationDateBrd | CreationUserBrd |chaque Brand concerne un seul supplier  |
 --------|---------|----------------|-------------- | --------------- | --------------  |----------------------------------------|
+
+
+chaque supplier peut avoir plusieurs brands 
+|--------------------------------------------|
+
+## SupBrand
+
+CodeSupBrand | CodeSup | CodeBrd |
+------------ | ------- | ------- |
+
 
 ## Client
 CodeClt | NameClt | TelClt | MobClt   |TitleClt | CatClt     | AddressClt | EmailClt | StatusClt(Active/Inactive) | SendSms(Y/N) |
@@ -28,16 +36,16 @@ CreationDateClt | CreationUserClt |
 CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr(A/I)  | MadeInPr | CodeBrd |
 -------|-----------|--------|--------|----------|--------------   | -------- | ------- |
 
-CostPrice     | SellingPrice |  CodeSup    | CodeBrd     | SeasonPr        | CreationDatePr  | CreationUserPr  | 
---------------|--------------|-------------|  --------   | --------------- | --------------- | ----------------|
+CostPrice     | SellingPrice |  CodeSupBrand     | SeasonPr        | CreationDatePr  | CreationUserPr  | 
+--------------|--------------|-----------------  |  --------       | --------------- | --------------- | 
 
 
 ## Transaction(Debit in Stock ,Credit Out Stock)
 TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionDbCr |
 --------------| --------------- | --------------- | ------------- | --------------- |
 
-CodePr | CodeBr | CodeSup   |  CodeBrd     | CreationDateSt  | CreationUserSt |
------  |------- |-----------|  --------    | --------------  | ---------------| 
+CodePr | CodeBr | CodeSupBrand     | CreationDateSt  | CreationUserSt |
+-----  |------- |----------------- |  -----------    | --------------  | ---------------| 
 
 
 ## ProductBranchQty (this table will be fill depends trigger on transaction Table (Debit Or credit)
