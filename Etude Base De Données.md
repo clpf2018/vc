@@ -13,7 +13,7 @@ StatusSup(A/I) | CreationDateSup | CreationUserSup |
 |--------------------------------------------|
 
 ## Brand
-CodeBrd | NameBrd | ***Supplier*** | StatusBrd(A/I)| CreationDateBrd | CreationUserBrd |chaque Brand concerne un seul supplier  |
+  | NameBrd | ***Supplier*** | StatusBrd(A/I)| CreationDateBrd | CreationUserBrd |chaque Brand concerne un seul supplier  |
 --------|---------|----------------|-------------- | --------------- | --------------  |----------------------------------------|
 
 ## Client
@@ -32,12 +32,21 @@ CodePr | BarCodePr | NamePr | TypePr | FamilyPr |  StatusPr(A/I)  |
 CostPrice     | SellingPrice | ***Brand*** | SeasonPr  | CreationDatePr  | CreationUserPr  | 
 --------------|--------------|-------------|--------   | --------------- | --------------- |
 
-## ProductBranchQty
-
-CodePr | CodeBr   | QtyPr |
------- | -------- | ----- |
 
 
 ## Stock
 CodeSt | TelSt | AddressSt | StatusSt(A/I)  | CreationDateSt  | CreationUserSt|
 -------|-------|-----------|  --------      | --------------- | --------------|
+
+## Transaction
+TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionDbCr |
+--------------| --------------- | --------------- | ------------- | --------------- |
+
+CodePr | CodeBr | CodeSup   |  CodeBrd     | CreationDateSt  | CreationUserSt |
+-----  |------- |-----------|  --------    | --------------  | ---------------| 
+
+
+## ProductBranchQty
+
+CodePr | CodeBr   | QtyPr |
+------ | -------- | ----- |
