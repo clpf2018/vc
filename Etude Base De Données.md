@@ -35,7 +35,7 @@ CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *M
 -------| --------- | ------ | ------ | -------- | ------------------------- | --------------------------- | ------ |
 
 CostPrice | SellingPrice | *CodeSupBrand(we have table to match sup with Brand)* | SeasonPr | 
---------- | ------------ | -------------- |  ----------------------------------- | ---------| 
+--------- | ------------ | ----------------------------------------------------- | ---------| 
 
 CreationDatePr  | *CreationUserPr (Created By user)*  | 
 --------------- | ----------------------------------- |
