@@ -27,8 +27,8 @@ CodeSupBrand | CodeSup | CodeBrd |
 CodeClt | NameClt | TelClt | MobClt | TitleClt | *CatClt*(client Category(VIP,Regular...) | AddressClt | EmailClt | 
 ------- | ------- | ------ | ------ | -------- | ---------------------------------------- | ---------- | -------- | 
 
-*StatusClt(Active/Inactive)* | SendSms(Y/N) | CreationDateClt | *CreationUserClt* | 
----------------------------- | ------------ | --------------- | ----------------- |
+*StatusClt(Active/Inactive) Client Status)* | SendSms(Y/N) | CreationDateClt | *CreationUserClt(Created By User)* | 
+------------------------------------------- | ------------ | --------------- | ---------------------------------- |
 
 ## Product
 CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr(made in country)* | CodeBr |
