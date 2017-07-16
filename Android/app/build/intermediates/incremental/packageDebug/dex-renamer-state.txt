@@ -1,7 +1,0 @@
-#Sun Jul 16 17:23:35 EEST 2017
-base.0=D\:\\Android\\Projects\\GSBVC2017\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_4ef1abb29e10054eb7574dcf0b97387e9564fd83
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=D\:\\Android\\Projects\\GSBVC2017\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_9b72fe36681764c7662c19ddc0fad64989a29cf7\\classes.dex
-base.1=D\:\\Android\\Projects\\GSBVC2017\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_9b72fe36681764c7662c19ddc0fad64989a29cf7
-file.0=D\:\\Android\\Projects\\GSBVC2017\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_4ef1abb29e10054eb7574dcf0b97387e9564fd83\\classes.dex
