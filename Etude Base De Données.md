@@ -13,8 +13,8 @@ chaque supplier peut avoir plusieurs brands |
 ------------------------------------------- |
  
 ## Brand
-CodeBrd | NameBrd | StatusBrd(Active/Inactive) | CreationDateBrd | *CreationUserBrd* |
-------- | ------- | -------------------------- | --------------- | ----------------- |
+CodeBrd | NameBrd | StatusBrd(Active/Inactive) | CreationDateBrd | *CreationUserBrd(Created by User* |
+------- | ------- | -------------------------- | --------------- | --------------------------------- |
 
 chaque Brand concerne un seul supplier  |
 --------------------------------------- |
@@ -24,8 +24,8 @@ CodeSupBrand | CodeSup | CodeBrd |
 ------------ | ------- | ------- |
 
 ## Client
-CodeClt | NameClt | TelClt | MobClt | TitleClt | *CatClt* | AddressClt | EmailClt | 
-------- | ------- | ------ | ------ | -------- | -------- | ---------- | -------- | 
+CodeClt | NameClt | TelClt | MobClt | TitleClt | *CatClt*(client Category(VIP,Regular...) | AddressClt | EmailClt | 
+------- | ------- | ------ | ------ | -------- | ---------------------------------------- | ---------- | -------- | 
 
 *StatusClt(Active/Inactive)* | SendSms(Y/N) | CreationDateClt | *CreationUserClt* | 
 ---------------------------- | ------------ | --------------- | ----------------- |
@@ -34,8 +34,11 @@ CodeClt | NameClt | TelClt | MobClt | TitleClt | *CatClt* | AddressClt | EmailCl
 CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr* | CodeBr |
 -------| --------- | ------ | ------ | -------- | ------------------------- | ---------- | ------ |
 
-CostPrice | SellingPrice | *CodeSupBrand* | SeasonPr | CreationDatePr  | *CreationUserPr*  | 
---------- | ------------ | -------------- | -------- | --------------- | ----------------- | 
+CostPrice | SellingPrice | *CodeSupBrand(we have table to match sup with Brand)* | SeasonPr | 
+--------- | ------------ | -------------- |  ----------------------------------- | ---------| 
+
+CreationDatePr  | *CreationUserPr (Created By user)*  | 
+--------------- | ----------------------------------- |
 
 ## Transaction (Debit in Stock ,Credit Out Stock)
 TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionDbCr |
