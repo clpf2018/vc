@@ -12,6 +12,7 @@ package Inventory;
 public class Product {
     
    private int ID;
+   private String code;
    private String Name;
    private Boolean Can_Be_Sold;
    private Boolean Can_Be_Purshased;
@@ -21,9 +22,10 @@ public class Product {
    private double Sale_price;
    private double Cost;
    private Unit mesure;
-
-    public Product(int ID, String Name, Boolean Can_Be_Sold, Boolean Can_Be_Purshased, Product_Type Type, Product_Category Category, Barcode Bar, double Sale_price, double Cost, Unit mesure) {
-        this.ID = ID;
+   private Location Loc;
+   
+    public Product(String code, String Name, Boolean Can_Be_Sold, Boolean Can_Be_Purshased, Product_Type Type, Product_Category Category, Barcode Bar, double Sale_price, double Cost, Unit mesure) {
+        this.code = code;
         this.Name = Name;
         this.Can_Be_Sold = Can_Be_Sold;
         this.Can_Be_Purshased = Can_Be_Purshased;
@@ -41,6 +43,18 @@ public class Product {
 
     public String getName() {
         return Name;
+    }
+    
+    public String getCode(){
+        return this.code;
+    }
+    
+      public Location getLocation() {
+        return Loc;
+    }
+
+    public void setLocation(Location Loc){
+        this.Loc=Loc;
     }
 
     public Boolean getCan_Be_Sold() {
@@ -82,7 +96,11 @@ public class Product {
     public void setName(String Name) {
         this.Name = Name;
     }
-
+    
+    
+    public void setcode(String code){
+        this.code=code;
+    }
     public void setCan_Be_Sold(Boolean Can_Be_Sold) {
         this.Can_Be_Sold = Can_Be_Sold;
     }

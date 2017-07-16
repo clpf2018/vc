@@ -15,12 +15,12 @@ class Product_Category { //Juices , lamps...
     
     private int ID;
     private String Name;
-    private ArrayList<Product> produits;
+    private Product_Category parent; //parent category
 
-    public Product_Category(int ID, String Name, ArrayList<Product> produits) {
-        this.ID = ID;
+    public Product_Category( String Name, Product_Category parent) {
+        
         this.Name = Name;
-        this.produits = produits;
+        this.parent=parent;
     }
 
     public int getID() {
@@ -30,11 +30,12 @@ class Product_Category { //Juices , lamps...
     public String getName() {
         return Name;
     }
-
-    public ArrayList<Product> getProduits() {
-        return produits;
+    
+    public Product_Category getParent(){
+        return this.parent;
     }
 
+   
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -43,10 +44,9 @@ class Product_Category { //Juices , lamps...
         this.Name = Name;
     }
 
-    public void setProduits(ArrayList<Product> produits) {
-        this.produits = produits;
+    public void setParent(Product_Category parent){
+        this.parent=parent;
     }
-    
     
     
     

@@ -5,8 +5,7 @@
  */
 package Inventory;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,20 +17,20 @@ public class Entrepot {
     private String Name;
     private String Short_Name;
     private Address Adr;
-    private Map<String,Location> Loc;
+    private ArrayList<Location> Loc;
     private Entrepot Re_Supply;
     private String Note;
-    private Operation Opt;
+    
 
-    public Entrepot(int ID, String Name, String Short_Name, Address Adr, Map<String, Location> Loc, Entrepot Re_Supply, String Note, Operation Opt) {
-        this.ID = ID;
+    public Entrepot( String Name, String Short_Name, Address Adr, Location Loc, Entrepot Re_Supply, String Note) {
+        
         this.Name = Name;
         this.Short_Name = Short_Name;
         this.Adr = Adr;
-        this.Loc = Loc;
+        this.Loc.add(Loc);
         this.Re_Supply = Re_Supply;
         this.Note = Note;
-        this.Opt = Opt;
+        
     }
 
     public int getID() {
@@ -50,7 +49,7 @@ public class Entrepot {
         return Adr;
     }
 
-    public Map<String, Location> getLoc() {
+    public ArrayList<Location> getLoc() {
         return Loc;
     }
 
@@ -62,9 +61,7 @@ public class Entrepot {
         return Note;
     }
 
-    public Operation getOpt() {
-        return Opt;
-    }
+   
 
     public void setID(int ID) {
         this.ID = ID;
@@ -82,8 +79,8 @@ public class Entrepot {
         this.Adr = Adr;
     }
 
-    public void setLoc(Map<String, Location> Loc) {
-        this.Loc = Loc;
+    public void setLoc(Location Loc) {
+        this.Loc.add(Loc);
     }
 
     public void setRe_Supply(Entrepot Re_Supply) {
@@ -94,14 +91,6 @@ public class Entrepot {
         this.Note = Note;
     }
 
-    public void setOpt(Operation Opt) {
-        this.Opt = Opt;
-    }
-
-    @Override
-    public String toString() {
-        return "Entrepot{" + "ID=" + ID + ", Name=" + Name + ", Short_Name=" + Short_Name + ", Adr=" + Adr + ", Loc=" + Loc + ", Re_Supply=" + Re_Supply + ", Note=" + Note + ", Opt=" + Opt + '}';
-    }
     
 
     
