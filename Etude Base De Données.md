@@ -31,8 +31,8 @@ CodeClt | NameClt | TelClt | MobClt | TitleClt | *CatClt*(client Category(VIP,Re
 ---------------------------- | ------------ | --------------- | ----------------- |
 
 ## Product
-CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr* | CodeBr |
--------| --------- | ------ | ------ | -------- | ------------------------- | ---------- | ------ |
+CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr(made in country)* | CodeBr |
+-------| --------- | ------ | ------ | -------- | ------------------------- | --------------------------- | ------ |
 
 CostPrice | SellingPrice | *CodeSupBrand(we have table to match sup with Brand)* | SeasonPr | 
 --------- | ------------ | -------------- |  ----------------------------------- | ---------| 
