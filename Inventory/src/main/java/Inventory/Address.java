@@ -9,7 +9,7 @@ package Inventory;
  *
  * @author joseph
  */
-class Address {
+ public class Address {
 
     
     private int ID;
