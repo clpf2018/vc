@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Android\\Projects\\GSBVC2017\\Android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_stock_mobile.png",
+        "source": "D:\\Android\\Projects\\GSBVC2017\\Android\\app\\src\\main\\res\\drawable-ldpi\\ic_stock_mobile.png"
+    },
+    {
+        "merged": "D:\\Android\\Projects\\GSBVC2017\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_stock_mobile.png",
+        "source": "D:\\Android\\Projects\\GSBVC2017\\app\\src\\main\\res\\drawable-ldpi\\ic_stock_mobile.png"
+    }
+]

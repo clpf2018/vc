@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Android\Projects\GSBVC2017\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="D:\Android\Projects\GSBVC2017\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_9b72fe36681764c7662c19ddc0fad64989a29cf7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\Projects\GSBVC2017\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7beb43e2c190086e3a3cf166755736bdff61fc8e">
+        <dex dex="D:\Android\Projects\GSBVC2017\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_4ef1abb29e10054eb7574dcf0b97387e9564fd83\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Lenovo\.android\build-cache\754c313ee4a1d6c414612cef6f6b57a1f28f5f0d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\Android\Projects\GSBVC2017\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7a70af6bf3ea1eb819e7037de9f41c0bc0bf2843\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\SDK\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="D:\Android\Projects\GSBVC2017\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_5a6b5e06fb90b05a0b4dd0560a0326c20ff0f1ff\classes.dex" />
+    </item>
+
+</items>
