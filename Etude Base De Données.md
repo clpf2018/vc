@@ -53,3 +53,18 @@ This table will be filled depending on trigger on transaction Table (Debit Or cr
 
 CodePr | CodeBr | QtyPr |
 ------ | ------ | ----- |
+
+## User
+CodeUsr | FullNameUsr	| TelUsr	| AddressUsr | PostUsr | UsrName | Password | CreationDateUsr | ModifDateUsr | StatusUsr |
+------- | ----------- | ------ | ---------- | ------- |-------- | -------- | --------------- | ------------ | --------- |
+
+
+## MenuPermission
+CodeMenu | LabelMenu | DateCreaionMenu |
+-------- | --------- | --------------- |
+
+
+## UserMenu
+CodeUsr | CodeMenu | DateCreaionUsrMenu |
+------- | -------- | ------------------ |
+
