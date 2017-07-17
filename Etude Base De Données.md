@@ -44,8 +44,8 @@ CreationDatePr  | *CreationUserPr (Created By user)*  |
 TransactionId | TransactionType | TransactionDate | TransactionNo | TransactionDbCr |
 ------------- | --------------- | --------------- | ------------- | --------------- |
 
-CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt |
------  | ------ | ------------ | -------------- | -------------- | 
+CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |
+-----  | ------ | ------------ | -------------- | -------------- | ----- |
 
 ## ProductBranchQty 
 This table will be filled depending on trigger on transaction Table (Debit Or credit) |
