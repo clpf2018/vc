@@ -1,4 +1,4 @@
-j'ai recostruit le project de facon que l'invantory joue contient seulemet les Data object qui sont utilise dans le client application et le webServices Application.
+j'ai recostruit le project de facon que l'invantory contient seulemet les Data object qui sont utilise dans le client application et le webServices Application.
 WebServices application a seulement les droits d'accecer a FireBase.
 Workflow:
 1)client app demande des data en utilisant les web services assure par le webServices App
