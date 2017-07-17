@@ -60,11 +60,11 @@ CodeUsr | FullNameUsr	| TelUsr	| AddressUsr | PostUsr | UsrName | Password | Cre
 
 
 ## MenuPermission
-CodeMenu | LabelMenu | DateCreaionMenu |
--------- | --------- | --------------- |
+CodeMenu | LabelMenu | DateCreationMenu |
+-------- | --------- | ---------------- |
 
 
 ## UserMenu
-CodeUsr | CodeMenu | DateCreaionUsrMenu |
-------- | -------- | ------------------ |
+CodeUsr | CodeMenu | DateCreationUsrMenu |
+------- | -------- | ------------------- |
 
