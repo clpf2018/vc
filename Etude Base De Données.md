@@ -78,16 +78,27 @@ CodePr | CodeBr | QtyPr |
 
 
 ## User
-CodeUsr | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName | Password | CreationDateUsr | ModifDateUsr | StatusUsr |
-------- | ----------- | ------ | ---------- | ------- |-------- | -------- | --------------- | ------------ | --------- |
+CodeUsr | BranchCode | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName | Password | CreationDateUsr | ModifDateUsr | StatusUsr |
+------- | ---------- | ----------- | ------ | ---------- | ------- |-------- | -------- | --------------- | ------------ | 
+--------- |
 
+## UserProfile
+
+ProfileID | ProfileDesc | DateCreation |
+
+--------- | ----------- | ------------ |
 
 ## MenuPermission
 CodeMenu | LabelMenu | DateCreationMenu |
 -------- | --------- | ---------------- |
 
 
+## ProfileMenu
+ProfileID | CodeMenu | DateCreationProfileMenu |
+--------- | -------- | ----------------------- |
+
+
 ## UserMenu
-CodeUsr | CodeMenu | DateCreationUsrMenu |
-------- | -------- | ------------------- |
+CodeUsr | ProfileID | DateCreationUsrMenu |
+------- | --------- | ------------------- |
 
