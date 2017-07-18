@@ -5,6 +5,10 @@ layout: default
 
 # Répertoire du site VC
 
+## Justificatifs, choix, spécifications
+
+[Utilisateurs et Droits](tud)
+
 ## Liens utiles
 
 [GSUITE site du projet](http://projets2017.isae.edu.lb/)
