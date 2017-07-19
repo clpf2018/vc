@@ -1,4 +1,4 @@
-## Companies: the system may support many companies. STatus to enable/ disable a company 
+## Companies: the system may support many companies. Status to enable/ disable a company 
 
 CompCode | CompName | CompDesc | CreationDate | Status |
 -------- | -------- | -------- | ------------ | ------ |
