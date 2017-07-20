@@ -61,8 +61,8 @@ CreationDatePr  | *CreationUserPr (Created By user)*  |
 CompCode |TransactionId | TransactionType | TransactionDate | TransactionDbCr |
 -------- |------------- | --------------- | --------------- | --------------- |
 
-CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |From_CodeBr | To_CodeBr  |
------  | ------ | ------------ | -------------- | -------------- | ----- |------------| ---------- |
+CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |From_CodeBr | To_CodeBr  | conf_trf |
+-----  | ------ | ------------ | -------------- | -------------- | ----- |------------| ---------- | ---------|
 
 
 
