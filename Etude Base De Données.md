@@ -78,8 +78,8 @@ CompCode |CodePr | CodeBr | QtyPr |
 
 
 ## User
-CompCode |CodeUsr | BranchCode | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName |
--------- |------- | ---------- | ----------- | ------ | ---------- | ------- |---------|
+CompCode |CodeUsr | CodeBr | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName |
+-------- |------- | ------ | ----------- | ------ | ---------- | ------- |---------|
 
 |Password | CreationDateUsr | ModifDateUsr | StatusUsr |
  -------- | --------------- | ------------ | --------- |
