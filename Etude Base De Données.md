@@ -10,8 +10,8 @@ CompCode | CodeBr | NameBr | TelBr | AddressBr | Status |
 -------- | ------ | ------ | ----- | --------- | ------ |
 
 ## Supplier
-CodeSup | NameSup | TelSup | MobSup | AddressSup | EmailSup | StatusSup(Active/Inactive) |
-------- | ------- | ------ | ------ | ---------- | -------- | -------------------------- | 
+CompCode |CodeSup | NameSup | TelSup | MobSup | AddressSup | EmailSup | StatusSup(Active/Inactive) |
+-------- |------- | ------- | ------ | ------ | ---------- | -------- | -------------------------- | 
 
 CountrySup | CreationDateSup | CreationUserSup |
 ---------- | --------------- | --------------- |
@@ -20,25 +20,25 @@ chaque supplier peut avoir plusieurs brands |
 ------------------------------------------- |
  
 ## Brand
-CodeBrd | NameBrd | StatusBrd(Active/Inactive) | CreationDateBrd | *CreationUserBrd(Created by User* |
-------- | ------- | -------------------------- | --------------- | --------------------------------- |
+CompCode |CodeBrd | NameBrd | StatusBrd(Active/Inactive) | CreationDateBrd | *CreationUserBrd(Created by User* |
+-------- |------- | ------- | -------------------------- | --------------- | --------------------------------- |
 
 chaque Brand concerne un seul supplier  |
 --------------------------------------- |
 
 ## SupBrand
-CodeSupBrand | CodeSup | CodeBrd |
------------- | ------- | ------- |
+CompCode |CodeSupBrand | CodeSup | CodeBrd |
+-------- |------------ | ------- | ------- |
 
 
 ## Categories: will contain client categories
-CatCode | CatDesc | DateCreated |
-------- | ------- | ----------- |
+CompCode |CatCode | CatDesc | DateCreated |
+-------- |------- | ------- | ----------- |
 
 
 ## Client
-CodeClt | NameClt | TelClt | MobClt | TitleClt | CatCode | AddressClt | EmailClt | 
-------- | ------- | ------ | ------ | -------- | ------- | ---------- | -------- |
+CompCode |CodeClt | NameClt | TelClt | MobClt | TitleClt | CatCode | AddressClt | EmailClt | 
+-------- |------- | ------- | ------ | ------ | -------- | ------- | ---------- | -------- |
  
 
 *StatusClt(Active/Inactive) Client Status)* | SendSms(Y/N) | CreationDateClt | *CreationUserClt(Created By User)* | 
@@ -46,8 +46,8 @@ CodeClt | NameClt | TelClt | MobClt | TitleClt | CatCode | AddressClt | EmailClt
 
 
 ## Product
-CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr(made in country)* | CodeBr |
--------| --------- | ------ | ------ | -------- | ------------------------- | --------------------------- | ------ |
+CompCode |CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr(made in country)* | CodeBr |
+-------- |-------| --------- | ------ | ------ | -------- | ------------------------- | --------------------------- | ------ |
 
 CostPrice | SellingPrice | *CodeSupBrand(we have table to match sup with Brand)* | SeasonPr | 
 --------- | ------------ | ----------------------------------------------------- | ---------| 
@@ -58,8 +58,8 @@ CreationDatePr  | *CreationUserPr (Created By user)*  |
 
 
 ## Transaction (Debit in Stock ,Credit Out Stock)
-TransactionId | TransactionType | TransactionDate | TransactionDbCr |
-------------- | --------------- | --------------- | --------------- |
+CompCode |TransactionId | TransactionType | TransactionDate | TransactionDbCr |
+-------- |------------- | --------------- | --------------- | --------------- |
 
 CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |
 -----  | ------ | ------------ | -------------- | -------------- | ----- |
@@ -71,15 +71,15 @@ CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |
 This table will be filled depending on trigger on transaction Table (Debit Or credit) |
 ------------------------------------------------------------------------------------- |
 
-CodePr | CodeBr | QtyPr |
------- | ------ | ----- |
+CompCode |CodePr | CodeBr | QtyPr |
+-------- |------ | ------ | ----- |
 
 
 
 
 ## User
-CodeUsr | BranchCode | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName |
-------- | ---------- | ----------- | ------ | ---------- | ------- |---------|
+CompCode |CodeUsr | BranchCode | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName |
+-------- |------- | ---------- | ----------- | ------ | ---------- | ------- |---------|
 
 |Password | CreationDateUsr | ModifDateUsr | StatusUsr |
  -------- | --------------- | ------------ | --------- |
@@ -87,20 +87,20 @@ CodeUsr | BranchCode | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName |
 
 ## UserProfile
 
-ProfileID | ProfileDesc | DateCreation |
---------- | ----------- | ------------ |
+CompCode |ProfileID | ProfileDesc | DateCreation |
+-------- |--------- | ----------- | ------------ |
 
 ## MenuPermission
-CodeMenu | LabelMenu | DateCreationMenu |
--------- | --------- | ---------------- |
+CompCode |CodeMenu | LabelMenu | DateCreationMenu |
+-------- |-------- | --------- | ---------------- |
 
 
 ## ProfileMenu
-ProfileID | CodeMenu | DateCreationProfileMenu |
---------- | -------- | ----------------------- |
+CompCode |ProfileID | CodeMenu | DateCreationProfileMenu |
+-------- |--------- | -------- | ----------------------- |
 
 
 ## UserMenu
-CodeUsr | ProfileID | DateCreationUsrMenu |
-------- | --------- | ------------------- |
+CompCode |CodeUsr | ProfileID | DateCreationUsrMenu |
+-------- |------- | --------- | ------------------- |
 
