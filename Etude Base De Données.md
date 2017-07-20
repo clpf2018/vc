@@ -46,8 +46,8 @@ CompCode |CodeClt | NameClt | TelClt | MobClt | TitleClt | CatCode | AddressClt 
 
 
 ## Product
-CompCode |CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr(made in country)* | CodeBr |
--------- |-------| --------- | ------ | ------ | -------- | ------------------------- | --------------------------- | ------ |
+CompCode |CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr(made in country)* | 
+-------- |-------| --------- | ------ | ------ | -------- | ------------------------- | --------------------------- | 
 
 CostPrice | SellingPrice | *CodeSupBrand(we have table to match sup with Brand)* | SeasonPr | 
 --------- | ------------ | ----------------------------------------------------- | ---------| 
@@ -61,8 +61,8 @@ CreationDatePr  | *CreationUserPr (Created By user)*  |
 CompCode |TransactionId | TransactionType | TransactionDate | TransactionDbCr |
 -------- |------------- | --------------- | --------------- | --------------- |
 
-CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |
------  | ------ | ------------ | -------------- | -------------- | ----- |
+CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |From_CodeBr | To_CodeBr  |
+-----  | ------ | ------------ | -------------- | -------------- | ----- |------------| ---------- |
 
 
 
