@@ -12,7 +12,8 @@ TODO plus d'explication demandé
 
 ## Justificatifs, choix, spécifications
 
-[Utilisateurs et Droits](tud)
+* [Le projet GDB](GDB)
+* [Utilisateurs et Droits](tud)
 
 ## Les sous projets
 
