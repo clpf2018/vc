@@ -1,106 +1,80 @@
-## Companies: the system may support many companies. Status to enable/ disable a company 
+## Company:
+Ce système peut supporter plusieurs entreprises
+----------------------------------------------- |
 
-CompCode | CompName | CompDesc | CreationDate | Status |
--------- | -------- | -------- | ------------ | ------ |
+CompCode | CompName | CompDesc | CompCreationDate | CompStatus(Active/Inactive) |
+-------- | -------- | -------- | ---------------- | --------------------------- |
 
+## Branch:
+Dans le cas où CompCode est inclus dans la clé primaire, il devrait être reflété dans toutes les tables contenant BrCode |
+------------------------------------------------------------------------------------------------------------------------ |
 
-
-## Branch. Status to enable/ disable a branch. in case the compCode is included in the primary key it should be reflected in all the tables containing branchCode.
-CompCode | CodeBr | NameBr | TelBr | AddressBr | Status |
--------- | ------ | ------ | ----- | --------- | ------ |
+CompCode | BrCode | BrName | BrTel | BrAddress | BrStatus(Active/Inactive) |
+-------- | ------ | ------ | ----- | --------- | ------------------------- |
 
 ## Supplier
-CompCode |CodeSup | NameSup | TelSup | MobSup | AddressSup | EmailSup | StatusSup(Active/Inactive) |
--------- |------- | ------- | ------ | ------ | ---------- | -------- | -------------------------- | 
-
-CountrySup | CreationDateSup | CreationUserSup |
----------- | --------------- | --------------- |
-
 chaque supplier peut avoir plusieurs brands | 
 ------------------------------------------- |
+
+SupCode | SupName | SupTel | SupMobile | SupAddress | SupEmail | 
+------- | ------- | ------ | --------- | ---------- | -------- |  
+
+SupCountry | SupCreationDate | SupStatus(Active/Inactive) |
+---------- | --------------- | -------------------------- |
  
 ## Brand
-CompCode |CodeBrd | NameBrd | StatusBrd(Active/Inactive) | CreationDateBrd | *CreationUserBrd(Created by User* |
--------- |------- | ------- | -------------------------- | --------------- | --------------------------------- |
+chaque Brand concerne un seul supplier et une entreprise  |
+--------------------------------------------------------- |
 
-chaque Brand concerne un seul supplier  |
---------------------------------------- |
+CompCode |BrdCode | BrdName | BrdCreationDate | BrdStatus(Active/Inactive) | 
+-------- |------- | ------- | --------------- | -------------------------- |
 
 ## SupBrand
-CompCode |CodeSupBrand | CodeSup | CodeBrd |
--------- |------------ | ------- | ------- |
-
-
-## Categories: will contain client categories
-CompCode |CatCode | CatDesc | DateCreated |
--------- |------- | ------- | ----------- |
-
-
-## Client
-CompCode |CodeClt | NameClt | TelClt | MobClt | TitleClt | CatCode | AddressClt | EmailClt | 
--------- |------- | ------- | ------ | ------ | -------- | ------- | ---------- | -------- |
- 
-
-*StatusClt(Active/Inactive) Client Status)* | SendSms(Y/N) | CreationDateClt | *CreationUserClt(Created By User)* | 
-------------------------------------------- | ------------ | --------------- | ---------------------------------- |
-
-
-## Product
-CompCode |CodePr | BarCodePr | NamePr | TypePr | FamilyPr | StatusPr(Active/Inactive) | *MadeInPr(made in country)* | 
--------- |-------| --------- | ------ | ------ | -------- | ------------------------- | --------------------------- | 
-
-CostPrice | SellingPrice | *CodeSupBrand(we have table to match sup with Brand)* | SeasonPr | 
---------- | ------------ | ----------------------------------------------------- | ---------| 
-
-CreationDatePr  | *CreationUserPr (Created By user)*  | 
---------------- | ----------------------------------- |
-
-
-
-## Transaction (Debit in Stock ,Credit Out Stock)
-CompCode |TransactionId | TransactionType | TransactionDate | TransactionDbCr |
--------- |------------- | --------------- | --------------- | --------------- |
-
-CodePr | CodeBr | CodeSupBrand | CreationDateSt | CreationUserSt | QtyPr |From_CodeBr | To_CodeBr  | conf_trf |
------  | ------ | ------------ | -------------- | -------------- | ----- |------------| ---------- | ---------|
-
-
-
-
-## ProductBranchQty 
-This table will be filled depending on trigger on transaction Table (Debit Or credit) |
-------------------------------------------------------------------------------------- |
-
-CompCode |CodePr | CodeBr | QtyPr |
--------- |------ | ------ | ----- |
-
-
-
+SupBrandCode | SupCode | BrdCode |
+------------ | ------- | ------- |
 
 ## User
-CompCode |CodeUsr | CodeBr | FullNameUsr | TelUsr | AddressUsr | PostUsr | UsrName |
--------- |------- | ------ | ----------- | ------ | ---------- | ------- |---------|
+Chaque utilisateur concerne une branche |
+--------------------------------------- |
 
-|Password | CreationDateUsr | ModifDateUsr | StatusUsr |
- -------- | --------------- | ------------ | --------- |
+UsrCode | BrCode | UsrName | UsrEmail | UsrPassword |
+------- | ------ | ------- | -------- | ----------- |
 
+## Client
+Les informations sur le client sont necessaires pour envoyer les messages et les catalogues |
+------------------------------------------------------------------------------------------- |
 
-## UserProfile
+CltCode | CltTitle | CltName | CltMobile | CltAddress | CltEmail | 
+------- | -------- | ------- | --------- | ---------- | -------- |
+ 
+SendMessage (Y/N) | SendCatalogue (Y/N) | CltCreationDate | 
+----------------- | ------------------- | --------------- |
 
-CompCode |ProfileID | ProfileDesc | DateCreation |
--------- |--------- | ----------- | ------------ |
+## Stock
+Dans le cas où CompCode est inclus dans la clé primaire, il devrait être reflété dans toutes les tables contenant StockCode |
+--------------------------------------------------------------------------------------------------------------------------- |
 
-## MenuPermission
-CompCode |CodeMenu | LabelMenu | DateCreationMenu |
--------- |-------- | --------- | ---------------- |
+CompCode | StkCode | StkName | StkTel | StkAddress | 
+-------- | ------- | ------- | ------ | ---------- | 
 
+## Product
+CompCode |PrCode | PrBarCode | PrName | PrType | PrFamily | PrStatus (Active/Inactive) |
+-------- |-------| --------- | ------ | ------ | -------- | -------------------------- |
 
-## ProfileMenu
-CompCode |ProfileID | CodeMenu | DateCreationProfileMenu |
--------- |--------- | -------- | ----------------------- |
+CostPrice | SellingPrice | PrSeason | PrCreationDate | 
+--------- | ------------ | ---------| -------------- |
 
+## Transfert ou Order 
+Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
+----------------------------------------------------------------- |
 
-## UserMenu
-CompCode |CodeUsr | ProfileID | DateCreationUsrMenu |
--------- |------- | --------- | ------------------- |
+CompCode | PrCode | TransCode | TransType | TransDate | TransDbCr | TransQty |TransFrom | TransTo |
+-------- | ------ | --------- | --------- | --------- | --------- | -------- |----------| ------- |
+
+## ProductBranchQty 
+Cette table sera remplie en fonction du déclenchement sur la table de transfert (Débit/crédit) |
+---------------------------------------------------------------------------------------------- |
+
+CompCode | PrCode | BrCode | PrQty |
+-------- |------- | ------ | ----- |
 
