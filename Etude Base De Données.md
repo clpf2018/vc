@@ -30,7 +30,7 @@ CompCode |BrdCode | BrdName | BrdCreationDate | BrdStatus(Active/Inactive) |
 -------- |------- | ------- | --------------- | -------------------------- |
 
 ## SupBrand
-SupBrandCode | SupCode | BrdCode |
+SupBrdCode | SupCode | BrdCode |
 ------------ | ------- | ------- |
 
 ## User
@@ -58,8 +58,8 @@ CompCode | StkCode | StkName | StkTel | StkAddress |
 -------- | ------- | ------- | ------ | ---------- | 
 
 ## Product
-CompCode |PrCode | PrBarCode | PrName | PrType | PrFamily | PrStatus (Active/Inactive) |
--------- |-------| --------- | ------ | ------ | -------- | -------------------------- |
+CompCode |PrCode | PrBarCode | PrName | BrdCode | PrType | PrFamily | PrStatus (Active/Inactive) |
+-------- |-------| --------- | ------ | ------- |------- | -------- | -------------------------- |
 
 CostPrice | SellingPrice | PrSeason | PrCreationDate | 
 --------- | ------------ | ---------| -------------- |
