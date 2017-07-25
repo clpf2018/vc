@@ -5,13 +5,15 @@
  */
 package Inventory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
  * @author joseph
  */
-class Product_Category { //Juices , lamps...
+class Product_Category implements Serializable{ //Juices , lamps...
     
     private int ID;
     private String Name;
@@ -46,6 +48,39 @@ class Product_Category { //Juices , lamps...
 
     public void setParent(Product_Category parent){
         this.parent=parent;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 73 * hash + this.ID;
+        hash = 73 * hash + Objects.hashCode(this.Name);
+        hash = 73 * hash + Objects.hashCode(this.parent);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product_Category other = (Product_Category) obj;
+        if (this.ID != other.ID) {
+            return false;
+        }
+        if (!Objects.equals(this.Name, other.Name)) {
+            return false;
+        }
+        if (!Objects.equals(this.parent, other.parent)) {
+            return false;
+        }
+        return true;
     }
     
     
