@@ -16,8 +16,8 @@ CompCode | BrCode | BrName | BrTel | BrAddress | BrStatus(Active/Inactive) |
 chaque supplier peut avoir plusieurs brands | 
 ------------------------------------------- |
 
-SupCode | SupName | SupTel | SupMobile | SupAddress | SupEmail | 
-------- | ------- | ------ | --------- | ---------- | -------- |  
+CompCode | SupCode | SupName | SupTel | SupMobile | SupAddress | SupEmail | 
+-------- | ------- | ------- | ------ | --------- | ---------- | -------- |  
 
 SupCountry | SupCreationDate | SupStatus(Active/Inactive) |
 ---------- | --------------- | -------------------------- |
@@ -37,15 +37,15 @@ SupBrdCode | SupCode | BrdCode |
 Chaque utilisateur concerne une branche |
 --------------------------------------- |
 
-UsrCode | BrCode | UsrName | UsrEmail | UsrPassword |
-------- | ------ | ------- | -------- | ----------- |
+Compcode | UsrCode | BrCode | UsrName | UsrEmail | UsrPassword |
+-------- | ------- | ------ | ------- | -------- | ----------- |
 
 ## Client
 Les informations sur le client sont necessaires pour envoyer les messages et les catalogues |
 ------------------------------------------------------------------------------------------- |
 
-CltCode | CltTitle | CltName | CltMobile | CltAddress | CltEmail | 
-------- | -------- | ------- | --------- | ---------- | -------- |
+CompCode | CltCode | CltTitle | CltName | CltMobile | CltAddress | CltEmail | 
+-------- | ------- | -------- | ------- | --------- | ---------- | -------- |
  
 SendMessage (Y/N) | SendCatalogue (Y/N) | CltCreationDate | 
 ----------------- | ------------------- | --------------- |
