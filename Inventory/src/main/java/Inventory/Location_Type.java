@@ -5,11 +5,13 @@
  */
 package Inventory;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joseph
  */
-class Location_Type { //extennal ,internal , customer , vendor , procurement...
+class Location_Type implements Serializable { //extennal ,internal , customer , vendor , procurement...
     
     
 }

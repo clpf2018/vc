@@ -5,14 +5,22 @@
  */
 package Inventory;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joseph
  */
-class Location {
+class Location implements Serializable{
     
     private int ID;
-
+    private String Location_Name;
+    private Location_Type Loc_Type;
+    private Person Owner;
+    private Localization Localization;
+    private Strategy Strat; // Strategie de retrait e.g: FIFO , LIFO...
+    private String Note;
+    
     public int getID() {
         return ID;
     }
@@ -78,12 +86,6 @@ class Location {
         this.Strat = Strat;
         this.Note = Note;
     }
-    private String Location_Name;
-    private Location_Type Loc_Type;
-    private Person Owner;
-    private Localization Localization;
-    private Strategy Strat; // Strategie de retrait e.g: FIFO , LIFO...
-    private String Note;
-    
+   
     
 }

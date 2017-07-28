@@ -5,13 +5,15 @@
  */
 package Inventory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
  * @author joseph
  */
-public class Entrepot {
+public class Entrepot implements Serializable{
     
     private int ID;
     private String Name;
@@ -31,6 +33,55 @@ public class Entrepot {
         this.Re_Supply = Re_Supply;
         this.Note = Note;
         
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.ID;
+        hash = 89 * hash + Objects.hashCode(this.Name);
+        hash = 89 * hash + Objects.hashCode(this.Short_Name);
+        hash = 89 * hash + Objects.hashCode(this.Adr);
+        hash = 89 * hash + Objects.hashCode(this.Loc);
+        hash = 89 * hash + Objects.hashCode(this.Re_Supply);
+        hash = 89 * hash + Objects.hashCode(this.Note);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Entrepot other = (Entrepot) obj;
+        if (this.ID != other.ID) {
+            return false;
+        }
+        if (!Objects.equals(this.Name, other.Name)) {
+            return false;
+        }
+        if (!Objects.equals(this.Short_Name, other.Short_Name)) {
+            return false;
+        }
+        if (!Objects.equals(this.Note, other.Note)) {
+            return false;
+        }
+        if (!Objects.equals(this.Adr, other.Adr)) {
+            return false;
+        }
+        if (!Objects.equals(this.Loc, other.Loc)) {
+            return false;
+        }
+        if (!Objects.equals(this.Re_Supply, other.Re_Supply)) {
+            return false;
+        }
+        return true;
     }
 
     public int getID() {

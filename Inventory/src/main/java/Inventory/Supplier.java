@@ -5,16 +5,22 @@
  */
 package Inventory;
 
+import java.io.Serializable;
+
 /**
  *
  * @author joseph
  */
-public class Supplier extends Person {
+public class Supplier extends Person implements Serializable {
     
     public Supplier(int ID,String Name,  String Phone, String Mobile, String Fax, String Email) {
         super(ID,Name, Phone, Mobile, Fax, Email);
         
     }
+
+    
+    
+    
     
     
 }

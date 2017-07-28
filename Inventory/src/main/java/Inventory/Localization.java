@@ -5,11 +5,14 @@
  */
 package Inventory;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author joseph
  */
-class Localization {
+class Localization implements Serializable{
     
     
     private int ID;
@@ -64,6 +67,47 @@ class Localization {
 
     public void setBar(Barcode Bar) {
         this.Bar = Bar;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.ID;
+        hash = 67 * hash + Objects.hashCode(this.Corridor);
+        hash = 67 * hash + Objects.hashCode(this.Shelf);
+        hash = 67 * hash + Objects.hashCode(this.Height);
+        hash = 67 * hash + Objects.hashCode(this.Bar);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Localization other = (Localization) obj;
+        if (this.ID != other.ID) {
+            return false;
+        }
+        if (!Objects.equals(this.Corridor, other.Corridor)) {
+            return false;
+        }
+        if (!Objects.equals(this.Shelf, other.Shelf)) {
+            return false;
+        }
+        if (!Objects.equals(this.Height, other.Height)) {
+            return false;
+        }
+        if (!Objects.equals(this.Bar, other.Bar)) {
+            return false;
+        }
+        return true;
     }
     
 }

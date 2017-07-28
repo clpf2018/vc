@@ -5,11 +5,14 @@
  */
 package Inventory;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 /**
  *
  * @author joseph
  */
- public class Address {
+ public class Address implements Serializable{
 
     
     private int ID;
@@ -21,6 +24,63 @@ package Inventory;
     private String Email;
     private String Contact;
     private String Note;
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.ID;
+        hash = 17 * hash + Objects.hashCode(this.Street);
+        hash = 17 * hash + Objects.hashCode(this.City);
+        hash = 17 * hash + Objects.hashCode(this.State);
+        hash = 17 * hash + this.ZIP;
+        hash = 17 * hash + Objects.hashCode(this.Country);
+        hash = 17 * hash + Objects.hashCode(this.Email);
+        hash = 17 * hash + Objects.hashCode(this.Contact);
+        hash = 17 * hash + Objects.hashCode(this.Note);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Address other = (Address) obj;
+        if (this.ID != other.ID) {
+            return false;
+        }
+        if (this.ZIP != other.ZIP) {
+            return false;
+        }
+        if (!Objects.equals(this.Street, other.Street)) {
+            return false;
+        }
+        if (!Objects.equals(this.City, other.City)) {
+            return false;
+        }
+        if (!Objects.equals(this.State, other.State)) {
+            return false;
+        }
+        if (!Objects.equals(this.Country, other.Country)) {
+            return false;
+        }
+        if (!Objects.equals(this.Email, other.Email)) {
+            return false;
+        }
+        if (!Objects.equals(this.Contact, other.Contact)) {
+            return false;
+        }
+        if (!Objects.equals(this.Note, other.Note)) {
+            return false;
+        }
+        return true;
+    }
 
     public int getID() {
         return ID;
