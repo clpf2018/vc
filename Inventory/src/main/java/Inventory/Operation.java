@@ -14,7 +14,7 @@ import java.util.Objects;
  *
  * @author joseph
  */
-class Operation implements Serializable{
+public class Operation implements Serializable{
     
     private int ID;
     private Person peron;

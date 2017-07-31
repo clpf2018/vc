@@ -9,7 +9,7 @@ package Inventory;
  *
  * @author joseph
  */
-class Product_Type { // stockable , consumable ,Service
+public class Product_Type { // stockable , consumable ,Service
     
     
     
