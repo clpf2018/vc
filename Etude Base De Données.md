@@ -6,8 +6,6 @@ CompCode | CompName | CompDesc | CompCreationDate | CompStatus(Active/Inactive) 
 -------- | -------- | -------- | ---------------- | --------------------------- |
 
 ## Branch:
-Dans le cas où CompCode est inclus dans la clé primaire, il devrait être reflété dans toutes les tables contenant BrCode |
------------------------------------------------------------------------------------------------------------------------- |
 
 CompCode | BrCode | BrName | BrTel | BrAddress | BrStatus(Active/Inactive) |
 -------- | ------ | ------ | ----- | --------- | ------------------------- |
@@ -16,29 +14,46 @@ CompCode | BrCode | BrName | BrTel | BrAddress | BrStatus(Active/Inactive) |
 chaque supplier peut avoir plusieurs brands | 
 ------------------------------------------- |
 
-CompCode | SupCode | SupName | SupTel | SupMobile | SupAddress | SupEmail | 
--------- | ------- | ------- | ------ | --------- | ---------- | -------- |  
+SupCode | SupName | SupTel | SupMobile | SupAddress | SupEmail | 
+------- | ------- | ------ | --------- | ---------- | -------- |  
 
-SupCountry | SupCreationDate | SupStatus(Active/Inactive) |
----------- | --------------- | -------------------------- |
- 
 ## Brand
-chaque Brand concerne un seul supplier et une entreprise  |
---------------------------------------------------------- |
+chaque Brand concerne un seul fournisseur |
+----------------------------------------- |
 
-CompCode |BrdCode | BrdName | BrdCreationDate | BrdStatus(Active/Inactive) | 
--------- |------- | ------- | --------------- | -------------------------- |
-
-## SupBrand
-SupBrdCode | SupCode | BrdCode |
------------- | ------- | ------- |
+BrdCode | BrdName | BrdCreationDate | BrdStatus(Active/Inactive) | 
+------- | ------- | --------------- | -------------------------- |
 
 ## User
-Chaque utilisateur concerne une branche |
---------------------------------------- |
+Chaque utilisateur concerne une branche et accède les autres branches selon son role |
+------------------------------------------------------------------------------------ |
 
-Compcode | UsrCode | BrCode | UsrName | UsrEmail | UsrPassword |
--------- | ------- | ------ | ------- | -------- | ----------- |
+UsrCode | UsrFullName | UsrUsername | UsrPass | UsrMobile | UsrAddress |
+------- | ----------- | ----------- | ------- | --------- | ---------- |
+
+## Role
+Chaque utilisateur possède un role bien defini dans le syst1ème |
+--------------------------------------------------------------- |
+
+RoCode | RoName |
+------ | ------ |
+
+## Action
+Chaque Role signifie certaines action que l'utilisateur peut faire dans le syst1ème |
+----------------------------------------------------------------------------------- |
+
+ActCode | ActName | ActDescription |
+------- | ------- | -------------- |
+
+## RoleAction
+
+RoCode | ActCode |
+------ | ------- |
+
+## UserRoleBranch
+
+UsrCode | RoCode | BrCode |
+------- | ------ | ------ |
 
 ## Client
 Les informations sur le client sont necessaires pour envoyer les messages et les catalogues |
@@ -51,30 +66,40 @@ SendMessage (Y/N) | SendCatalogue (Y/N) | CltCreationDate |
 ----------------- | ------------------- | --------------- |
 
 ## Stock
-Dans le cas où CompCode est inclus dans la clé primaire, il devrait être reflété dans toutes les tables contenant StockCode |
---------------------------------------------------------------------------------------------------------------------------- |
+Dans le cas où CompCode est inclus dans la clé primaire, il devrait être reflété dans toutes les tables contenant ce fiels |
+-------------------------------------------------------------------------------------------------------------------------- |
 
 CompCode | StkCode | StkName | StkTel | StkAddress | 
 -------- | ------- | ------- | ------ | ---------- | 
 
 ## Product
-CompCode |PrCode | PrBarCode | PrName | BrdCode | PrType | PrFamily | PrStatus (Active/Inactive) |
--------- |-------| --------- | ------ | ------- |------- | -------- | -------------------------- |
 
-CostPrice | SellingPrice | PrSeason | PrCreationDate | 
---------- | ------------ | ---------| -------------- |
+PrCode | PrBarCode | PrName | BrdCode | PrFamily | PrStatus (Active/Inactive) |
+-------| --------- | ------ | ------- | -------- | -------------------------- |
 
-## Transfert ou Order 
+CostPrice | SellingPrice | PrSeason | 
+--------- | ------------ | ---------|
+
+## StockProduct
+
+StkCode | PrCode | StkPrQty |
+------- | ------ | -------- |
+
+## Order 
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
 ----------------------------------------------------------------- |
 
-CompCode | PrCode | TransCode | TransType | TransDate | TransDbCr | TransQty |TransFrom | TransTo |
--------- | ------ | --------- | --------- | --------- | --------- | -------- |----------| ------- |
+PrCode | TrCode | OrdCode | OrdDate | OrdSource | OrdDestination |OrdQty |
+------ | ------ | ------- | ------- | --------- | -------------- | ----- |
 
 ## ProductBranchQty 
 Cette table sera remplie en fonction du déclenchement sur la table de transfert (Débit/crédit) |
 ---------------------------------------------------------------------------------------------- |
 
-CompCode | PrCode | BrCode | PrQty |
--------- |------- | ------ | ----- |
+CompCode | PrCode | BrCode | BrPrQty |
+-------- |------- | ------ | ------- |
 
+## TransactionType
+
+TrCode | Source | Destination |
+------ | ------ | ----------- |
