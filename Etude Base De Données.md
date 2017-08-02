@@ -74,8 +74,8 @@ CompCode | StkCode | StkName | StkTel | StkAddress |
 
 ## Product
 
-PrCode | PrBarCode | PrName | BrdCode | SupCode | PrFamily | PrStatus (Active/Inactive) |
--------| --------- | ------ | ------- | ------- | -------- | -------------------------- |
+PrCode | PrBarCode | PrName | BrdCode | SupCode | PrType | PrFamily | PrStatus (Active/Inactive) |
+-------| --------- | ------ | ------- | ------- | ------ |--------- | -------------------------- |
 
 CostPrice | SellingPrice | PrSeason | 
 --------- | ------------ | ---------|
