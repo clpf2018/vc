@@ -8,6 +8,7 @@ package Inventory;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -22,11 +23,11 @@ public class Operation implements Serializable{
     private Address Destination;
     private Date Scheduled_Date;
     private Operation_type Opt;
-    private ArrayList<Product> products_demand;
+    private HashMap<Product,Integer> products_demand; //integer is the quantity/
     private Operation_State State;
     private String Reference_Sequence;
 
-    public Operation(int ID, Person peron, Address Source, Address Destination, Date Scheduled_Date, Operation_type Opt, ArrayList<Product> products_demand, Operation_State State, String Reference_Sequence) {
+    public Operation(int ID, Person peron, Address Source, Address Destination, Date Scheduled_Date, Operation_type Opt, HashMap<Product,Integer> products_demand, Operation_State State, String Reference_Sequence) {
         this.ID = ID;
         this.peron = peron;
         this.Source = Source;
@@ -86,11 +87,11 @@ public class Operation implements Serializable{
         this.Opt = Opt;
     }
 
-    public ArrayList<Product> getProducts_demand() {
+    public HashMap<Product,Integer> getProducts_demand() {
         return products_demand;
     }
 
-    public void setProducts_demand(ArrayList<Product> products_demand) {
+    public void setProducts_demand(HashMap<Product,Integer> products_demand) {
         this.products_demand = products_demand;
     }
 
