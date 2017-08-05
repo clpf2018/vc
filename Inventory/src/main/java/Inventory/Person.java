@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author joseph
  */
-class Person implements Serializable{
+public class Person implements Serializable{
 
     
     

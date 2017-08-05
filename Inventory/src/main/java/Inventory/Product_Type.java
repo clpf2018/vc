@@ -9,7 +9,17 @@ package Inventory;
  *
  * @author joseph
  */
-class Product_Type { // stockable , consumable ,Service
+public class Product_Type { // stockable , consumable ,Service
+    
+    private int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
     
     
     

@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author joseph
  */
-class Location implements Serializable{
+public class Location implements Serializable{
     
     private int ID;
     private String Location_Name;

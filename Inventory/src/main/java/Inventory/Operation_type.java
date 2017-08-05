@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author joseph
  */
-class Operation_type implements Serializable {
+public class Operation_type implements Serializable {
     //Receipts, internal transfer ,Delivery orders
     private int ID;
     private String Name;
