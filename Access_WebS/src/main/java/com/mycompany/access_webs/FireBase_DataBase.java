@@ -41,11 +41,13 @@ FirebaseOptions options = new FirebaseOptions.Builder()
   .setDatabaseUrl("https://gestion-et-suivi-de-bien-c2c12.firebaseio.com/")
   .build();
 
-FirebaseApp.initializeApp(options);
+//FirebaseApp.initializeApp(options);
 
 //DatabaseReference ref = FirebaseDatabase
   //  .getInstance()
     //.getReference("");
+
+
 
 }
 
