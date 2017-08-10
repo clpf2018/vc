@@ -89,6 +89,8 @@
             
       ii.	External (from warehouse to client)
           1.	Same as internal but destination is the destination of the client
+	  
+    g. Operations History
           
 
 
@@ -103,7 +105,7 @@
 
     d.	Free things (view, edit  Location)
 
-    e.	Operations Internal + external (view + edit status)
+    e.	Operations Internal + external (view (History) + edit status)
 
     f.	Barcode scanner
         i.	New items ( created a product by inventory manager )
