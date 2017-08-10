@@ -1,0 +1,131 @@
+                                                      ACCOUNT MANAGEMENT
+
+1.  SIGN IN
+    a.	role 
+        i.	client 
+        ii.	inventory management
+        iii.	warehouse management
+    b.	email
+    c.	password
+
+2.	REGISTER
+    a.	role 
+        i.	client 
+        ii.	inventory management
+        iii.	warehouse management
+    b.	email
+    c.	password
+    d.	confirm password
+    e.	name (if role == client it will change to company_name)
+    f.	phone
+    g.	mobile
+    h.	fax
+    i.	address  (if role == client)  
+    j.	city  (if role == client)  
+    k.	latitude (if role == client)
+    l.	longitude  (if role == client)  
+
+
+
+                                                            USER ACCESS
+
+1.	ROLE CLIENT (MENU)
+
+    a.	Order products
+    b.	Order History (external operations)
+
+
+
+2.	ROLE INVENTORY MANAGEMENT (MENU)
+
+    a.	Warehouse management (view, create, edit, delete)
+        i.	Name
+        ii.	Address
+        iii.	Description
+        iv.	Longitude
+        v.	Latitude
+        vi.	City
+
+    b.	Products (create, view, edit, delete)
+        i.	Code
+        ii.	Name
+        iii.	Can_be_sold
+        iv.	Cost
+        v.	Sale_price
+        vi.	Unit_of_mager ( 50 kg )
+        vii.	Product_type (stockable, consumable, service)
+        viii.	Location array ( by warehouse manager )
+              1.	Corridor (can’t be done by inventory manager)
+              2.	Shelf (can’t be done by inventory manager)
+              3.	Height (can’t be done by inventory manager)
+              4.	Warehouse name
+              5.	Quantity of product
+        ix.	Category 
+        x.	Brand
+        xi.	Description
+        xii.	Barcode
+        xiii.	adjustment
+
+    c.	Promotions  ( virtuel same as product but contain a validate button to be a product )
+
+    d.	Free things
+        i.	Same as product but contain  in plus a  type (sample , damaged .. )
+
+    e.	Adjustment 
+        i.	Product (drop down)
+        ii.	Type (sample or pieces)
+
+    f.	Operations (Internal + external)
+        i.	Internal (from warehouse to another)
+            1.	Source
+            2.	Destination
+            3.	Date
+            4.	Status
+                a.	Pending
+                b.	Canceled
+                c.	Packaging
+                d.	Delivered
+            5.	Array of products 
+            
+      ii.	External (from warehouse to client)
+          1.	Same as internal but destination is the destination of the client
+          
+
+
+
+3.	ROLE WAREHOUSE MANAGER (MENU)
+
+    a.	Warehouse management (view)
+
+    b.	Products ( view, edit  Location )
+
+    c.	Promotions  (view, edit  Location)
+
+    d.	Free things (view, edit  Location)
+
+    e.	Operations Internal + external (view + edit status)
+
+    f.	Barcode scanner
+        i.	New items ( created a product by inventory manager )
+        ii.	Old items ( view / update locations )
+
+
+
+
+
+
+	
+	
+
+
+
+ 
+
+
+
+
+
+
+
+
+
