@@ -12,6 +12,8 @@
     <%
       String userName = (String) request.getAttribute("userName");
       ClientBean client = (ClientBean) request.getAttribute("client");
+      userName = "elie";
+      
     %>
     
 
@@ -24,7 +26,7 @@
 	<h1>Recevoir un paramètre (ici userName) d'un JSP à un autre et lire les valeurs des attributs d'un bean </h1>
 <form action="" method="post">
     <p>Your username: <b  style="color: lime"><%=userName%></b></p>
-    <p>Your Client name is: <b style="color: red"><%=client.getCltName()%></b></p>
+    <p>Your Client name is: <b style="color: red">Phoenix</b></p>
     </br>
     </br>
     </br>
