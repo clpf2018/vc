@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author joseph
  */
-class Operation_State implements Serializable { //Draft,Waiting availability ,partially avaialble ,Available , done
+public class Operation_State implements Serializable { //Draft,Waiting availability ,partially avaialble ,Available , done
     
 //* Draft: not confirmed yet and will not be scheduled until confirmed
 //* Waiting Another Operation: waiting for another move to proceed before it becomes automatically available (e.g. in Make-To-Order flows)

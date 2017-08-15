@@ -13,7 +13,7 @@ import java.util.Objects;
  *
  * @author joseph
  */
-class Product_Category implements Serializable{ //Juices , lamps...
+public class Product_Category implements Serializable{ //Juices , lamps...
     
     private int ID;
     private String Name;

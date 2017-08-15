@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author joseph
  */
-class Localization implements Serializable{
+public class Localization implements Serializable{
     
     
     private int ID;

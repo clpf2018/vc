@@ -21,7 +21,7 @@ public class Product implements Serializable {
    private Boolean Can_Be_Purshased;
    private Product_Type Type;
    private Product_Category Category;
-   private Barcode Bar;
+   private Barcode Bar; //should be int
    private double Sale_price;
    private double Cost;
    private Unit mesure;
