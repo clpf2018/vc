@@ -80,17 +80,20 @@ PrCode | PrBarCode | PrName | BrdCode | SupCode | PrType | PrFamily | PrStatus (
 CostPrice | SellingPrice | PrSeason | 
 --------- | ------------ | ---------|
 
-## StockProduct
-
-StkCode | PrCode | StkPrQty |
-------- | ------ | -------- |
 
 ## Order 
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
 ----------------------------------------------------------------- |
 
-CompCode |PrCode | TrCode | Ordnumb | OrdDate | BrCode    | orderOrdSource | OrdDestination |OrdQty |
--------- |------ | ------ | ------- | ------- | --------- | -------------- | -------------- |-------|
+CompCode |PrCode | TrCode | Ordnumb | OrdDate | BrCode    | orderOrdSource | OrdDestination |OrdQty | Orddbcr|
+-------- |------ | ------ | ------- | ------- | --------- | -------------- | -------------- |-------| -------|
+
+## Invoice 
+Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
+----------------------------------------------------------------- |
+
+CompCode |PrCode | TrCode | Invnumb | InvDate | BrCode    | InvQty |Invdbcr|SellingPrice|CltCode|
+-------- |------ | ------ | ------- | ------- | --------- | -------|-------|------------|-------|
 
 ## ProductBranchQty 
 Cette table sera remplie en fonction du déclenchement sur la table de transfert (Débit/crédit) |
