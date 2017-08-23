@@ -89,8 +89,8 @@ StkCode | PrCode | StkPrQty |
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
 ----------------------------------------------------------------- |
 
-PrCode | TrCode | OrdCode | OrdDate | OrdSource | OrdDestination |OrdQty |
------- | ------ | ------- | ------- | --------- | -------------- | ----- |
+CompCode |PrCode | TrCode | Ordnumb | OrdDate | BrCode    | orderOrdSource | OrdDestination |OrdQty |
+-------- |------ | ------ | ------- | ------- | --------- | -------------- | -------------- |-------|
 
 ## ProductBranchQty 
 Cette table sera remplie en fonction du déclenchement sur la table de transfert (Débit/crédit) |
