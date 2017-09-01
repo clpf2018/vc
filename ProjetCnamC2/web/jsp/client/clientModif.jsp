@@ -1,57 +1,97 @@
-<%-- 
-    Document   : clientModif
-    Created on : Jul 26, 2017, 11:31:35 PM
-    Author     : Elie
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ page import="javax.servlet.http.*" %>
-<%@ page import="cnam.gestionstock.bean.client.ClientBean" %>
-    
-    <%
-      String userName = (String) request.getAttribute("userName");
-      ClientBean client = (ClientBean) request.getAttribute("client");
-      userName = "elie";
-      
-    %>
-    
-
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Structure projet web</title>
+    <title></title>
+    <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="//cdn.kendostatic.com/2013.1.319/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2012.1.322/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/kendo.web.plugins.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2014.1.416/js/kendo.all.min.js"></script>
 </head>
 <body>
-	<h1>Recevoir un paramètre (ici userName) d'un JSP à un autre et lire les valeurs des attributs d'un bean </h1>
-<form action="" method="post">
-    <p>Your username: <b  style="color: lime"><%=userName%></b></p>
-    <p>Your Client name is: <b style="color: red">Phoenix</b></p>
-    </br>
-    </br>
-    </br>
-    <p>Ce premier commit est juste pour mettre la structure du projet web et standardiser la manière dont on va créer les packages et répertoires ainsi que la convention des noms des classes, packages,....</br>
-        Pour chaque module on va creer des packages ayant le nom du module sous les packages principaux où on va créer nos fichiers JAVA:
-    <ul>
-        <li>cnam.gestionstock.bean</li>
-        <li>cnam.gestionstock.dao</li>
-        <li>cnam.gestionstock.servlet</li>
-    </ul>
-    Par exemple pour le module item on aura les packages suivants:
-    <ul>
-        <li>cnam.gestionstock.bean.item</li>
-        <li>cnam.gestionstock.dao.item</li>
-        <li>cnam.gestionstock.servlet.item</li>
-    </ul>
-    N.B: Tous les lettres du nom d'un package doivent être minuscule.
-    </p>
-	
-    De même pour la partie interface, pour chaque module on va créer un répertoire ayant le même nom du module (toutes les lettres étant en minuscule) sous la répertoire 'jsp'.
-    
-    Les noms des classes et interfaces JAVA doivent toujours commencer par des lettres majuscules et doivent toujours contenir les préfixes suivant par analogie avec leur packages:'Servlet','Bean','DAO','DAOImpl'.
-    </br>Les noms des fichiers JSP doivent toujours commencer par des lettres minuscules.
-    Le flux des requests va être le suivant:<h2>JSP-->Servlet-->(DAO;DAOImpl)-->BD-->(DAO;DAOImpl)-->Servlet-->JSP</h2>
- 
-</form>
+        <div id="example">
+            <div id="grid"></div>
+
+            <script>
+                $(document).ready(function () {
+                    var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service",
+                        dataSource = new kendo.data.DataSource({
+                            transport: {
+                                read:  {
+                                    url: crudServiceBaseUrl + "/Products",
+                                    dataType: "jsonp"
+                                },
+                                update: {
+                                    url: crudServiceBaseUrl + "/Products/Update",
+                                    dataType: "jsonp"
+                                },
+                                destroy: {
+                                    url: crudServiceBaseUrl + "/Products/Destroy",
+                                    dataType: "jsonp"
+                                },
+                                create: {
+                                    url: crudServiceBaseUrl + "/Products/Create",
+                                    dataType: "jsonp"
+                                },
+                                parameterMap: function(options, operation) {
+                                    if (operation !== "read" && options.models) {
+                                        return {models: kendo.stringify(options.models)};
+                                    }
+                                }
+                            },
+                            batch: true,
+                            pageSize: 10,
+                            schema: {
+                                model: {
+                                    id: "ProductID",
+                                    fields: {
+                                        ProductID: { editable: false, nullable: true },
+                                        ProductName: { validation: { required: true,
+                                                productnamevalidation: function (input) {
+                                                    if (input.is("[name='ProductName']") && input.val() != "") {
+                                                        input.attr("data-productnamevalidation-msg", "Product Name should start with capital letter");
+                                                        return /^[A-Z]/.test(input.val());
+                                                    }
+
+                                                    return true;
+                                                } } },
+                                        UnitPrice: { type: "number", validation: { required: true, min: 1} },
+                                        Discontinued: { type: "boolean" },
+                                        UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+                                    }
+                                }
+                            }
+                        });
+
+                    $("#grid").kendoGrid({
+                        dataSource: dataSource,
+                        navigatable: true,
+                        pageable: true,
+                        filterable: {
+                            mode: "row"
+                        },
+                        sortable: true,
+                        height: 550,
+                        toolbar: ["create", "save", "cancel"],
+                        columns: [
+                            { field: "ProductName", title: "Product Name"},
+                            { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: 120 },
+                            { field: "UnitsInStock", title: "Units In Stock", width: 120 },
+                            { field: "Discontinued", width: 120, editor: customBoolEditor },
+                            { command: "destroy", title: "&nbsp;", width: 150 }],
+                        editable: true
+                    });
+                });
+
+                function customBoolEditor(container, options) {
+                    $('<input class="k-checkbox" type="checkbox" name="Discontinued" data-type="boolean" data-bind="checked:Discontinued">').appendTo(container);
+                    $('<label class="k-checkbox-label">&#8203;</label>').appendTo(container);
+                }
+            </script>
+        </div>
+
+
 </body>
 </html>
