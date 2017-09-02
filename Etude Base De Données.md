@@ -7,8 +7,8 @@ CompCode | CompName | CompDesc | CompCreationDate | CompStatus(Active/Inactive) 
 
 ## Branch:
 
-CompCode | BrCode | BrName | BrTel | BrAddress | BrStatus(Active/Inactive) |
--------- | ------ | ------ | ----- | --------- | ------------------------- |
+BrCode | CompCode | BrName | BrTel | BrAddress | BrStatus(Active/Inactive) |
+------ | -------- | ------ | ----- | --------- | ------------------------- |
 
 ## Supplier
 chaque supplier peut avoir plusieurs brands | 
@@ -47,46 +47,51 @@ ActCode | ActName | ActDescription |
 
 ## RoleAction
 
-RoCode | ActCode |
------- | ------- |
+RoActionCode | RoCode | ActCode |
+------------ | ------ | ------- |
 
-## UserRoleBranch
+## RoleBranch
 
-UsrCode | RoCode | BrCode |
-------- | ------ | ------ |
+RoBranchCode | RoCode | BrCode |
+------------ | ------ | ------ |
 
 ## Client
 Les informations sur le client sont necessaires pour envoyer les messages et les catalogues |
 ------------------------------------------------------------------------------------------- |
 
-CompCode | CltCode | CltTitle | CltName | CltMobile | CltAddress | CltEmail | 
--------- | ------- | -------- | ------- | --------- | ---------- | -------- |
+CltCode | CltTitle | CltName | CltMobile | CltEmail |  
+------- | -------- | ------- | --------- | -------- | 
  
-SendMessage (Y/N) | SendCatalogue (Y/N) | CltCreationDate | 
------------------ | ------------------- | --------------- |
+SendMessage (Y/N) | SendCatalogue (Y/N) | CltCreationDate | CltAddress |
+----------------- | ------------------- | --------------- | ---------- |
 
 ## Stock
-Dans le cas où CompCode est inclus dans la clé primaire, il devrait être reflété dans toutes les tables contenant ce fiels |
+Dans le cas où CompCode est inclus dans la clé primaire, il devrait être reflété dans toutes les tables contenant ce field |
 -------------------------------------------------------------------------------------------------------------------------- |
 
-CompCode | StkCode | StkName | StkTel | StkAddress | 
--------- | ------- | ------- | ------ | ---------- | 
+StkCode | StkName | StkTel | StkAddress | CompCode |
+------- | ------- | ------ | ---------- | -------- |
+
+## StockProduct
+
+StkProductCode | PrCode | StkCode | StkPrQty |
+-------------- | ------ | 
 
 ## Product
 
-PrCode | PrBarCode | PrName | BrdCode | SupCode | PrType | PrFamily | PrStatus (Active/Inactive) |
--------| --------- | ------ | ------- | ------- | ------ |--------- | -------------------------- |
+PrCode | PrBarCode | PrName | BrdCode | PrType | PrFamily | SupCode | PrStatus (Active/Inactive) |
+-------| --------- | ------ | ------- | ------ |--------- | ------- | -------------------------- |
 
-CostPrice | SellingPrice | PrSeason | 
---------- | ------------ | ---------|
+BrdCode | PrSeason | CostPrice | SellingPrice | 
+------- | -------- | --------- | ------------ |
 
 
 ## Order 
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
 ----------------------------------------------------------------- |
 
-CompCode |PrCode | TrCode | Ordnumb | OrdDate | BrCode    | orderOrdSource | OrdDestination |OrdQty | Orddbcr|
--------- |------ | ------ | ------- | ------- | --------- | -------------- | -------------- |-------| -------|
+OrdCode | OrdDate | OrdSource | OrdDestination | TrCode | OrdQty | CompCode | UsrCode | OrdDbCr|
+------- | ------- | --------- | -------------- | ------ | ------ | -------- | ------- |------- |
 
 ## Invoice 
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
@@ -95,12 +100,12 @@ Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
 CompCode |PrCode | TrCode | Invnumb | InvDate | BrCode    | InvQty |Invdbcr|SellingPrice|Value  |Discount|CltCode|
 -------- |------ | ------ | ------- | ------- | --------- | -------|-------|------------|-------|--------|-------|
 
-## ProductBranchQty 
+## BranchProduct 
 Cette table sera remplie en fonction du déclenchement sur la table de transfert (Débit/crédit) |
 ---------------------------------------------------------------------------------------------- |
 
-CompCode | PrCode | BrCode | BrPrQty |
--------- |------- | ------ | ------- |
+BrProductCode | BrCode | PrCode | Qty |
+------------- |------- | ------ | --- |
 
 ## TransactionType
 
