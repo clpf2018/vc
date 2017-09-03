@@ -38,6 +38,11 @@ Chaque utilisateur possède un role bien defini dans le syst1ème |
 RoCode | RoName |
 ------ | ------ |
 
+## UserRole
+
+UsrRoleCode | UsrCode | RoCode |
+----------- | ------- | ------ |
+
 ## Action
 Chaque Role signifie certaines action que l'utilisateur peut faire dans le syst1ème |
 ----------------------------------------------------------------------------------- |
@@ -72,11 +77,6 @@ Dans le cas où CompCode est inclus dans la clé primaire, il devrait être refl
 StkCode | StkName | StkTel | StkAddress | CompCode |
 ------- | ------- | ------ | ---------- | -------- |
 
-## StockProduct
-
-StkProductCode | PrCode | StkCode | StkPrQty |
--------------- | ------ | 
-
 ## Product
 
 PrCode | PrBarCode | PrName | BrdCode | PrType | PrFamily | SupCode | PrStatus (Active/Inactive) |
@@ -85,6 +85,10 @@ PrCode | PrBarCode | PrName | BrdCode | PrType | PrFamily | SupCode | PrStatus (
 BrdCode | PrSeason | CostPrice | SellingPrice | 
 ------- | -------- | --------- | ------------ |
 
+## StockProduct
+
+StkProductCode | PrCode | StkCode | StkPrQty |
+-------------- | ------ | ------- | -------- |
 
 ## Order 
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
@@ -97,12 +101,15 @@ OrdCode | OrdDate | OrdSource | OrdDestination | TrCode | OrdQty | CompCode | Us
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
 ----------------------------------------------------------------- |
 
-CompCode |PrCode | TrCode | Invnumb | InvDate | BrCode    | InvQty |Invdbcr|SellingPrice|Value  |Discount|CltCode|
--------- |------ | ------ | ------- | ------- | --------- | -------|-------|------------|-------|--------|-------|
+InvCode | CompCode | PrCode | TrCode | InvDate | BrCode | InvQty | InvDbCr | 
+------- | -------- | ------ | ------ | ------- | ------ | ------ | ------- | 
+
+SellingPrice | Value  | Discount | CltCode |
+------------ | ------ | -------- | ------- |
 
 ## BranchProduct 
-Cette table sera remplie en fonction du déclenchement sur la table de transfert (Débit/crédit) |
----------------------------------------------------------------------------------------------- |
+Cette table sera remplie en fonction du déclenchement sur la table de transaction (Débit/crédit) |
+------------------------------------------------------------------------------------------------ |
 
 BrProductCode | BrCode | PrCode | Qty |
 ------------- |------- | ------ | --- |
