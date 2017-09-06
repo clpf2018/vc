@@ -94,8 +94,8 @@ StkProductCode | PrCode | StkCode | StkPrQty |
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
 ----------------------------------------------------------------- |
 
-OrdCode | OrdDate | OrdSource | OrdDestination | TrCode | OrdQty | CompCode | UsrCode | OrdDbCr|
-------- | ------- | --------- | -------------- | ------ | ------ | -------- | ------- |------- |
+OrdCode | OrdDate | OrdSource | OrdDestination | TrCode | OrdQty | CompCode | UsrCode | OrdDbCr| OrdPrice |
+------- | ------- | --------- | -------------- | ------ | ------ | -------- | ------- |------- | -------- |
 
 ## Invoice 
 Débit en (stock de la Branche), Crédit hors (stock de la Branche) |
