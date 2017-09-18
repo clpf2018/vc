@@ -1,0 +1,6 @@
+j'ai recostruit le project de facon que l'invantory contient seulemet les Data object qui sont utilise dans le client application et le webServices Application.
+WebServices application a seulement les droits d'accecer a FireBase.
+Workflow:
+1)client app demande des data en utilisant les web services assure par le webServices App
+2)le web services App joue le role du data access layer qui va communiquer avel le fireBase pour assurer ces data avant d'etre retourner au "Client App"
+3)WebServices App et client App ont des resources communs qui va etre l'invantory.(on peut aussi utiliser ses classes comme des DTO 'data transfer Object')
