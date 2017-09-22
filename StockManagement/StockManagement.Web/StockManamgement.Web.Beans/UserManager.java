@@ -7,7 +7,7 @@ package StockManamgement.Web.Beans;
 
 /**
  *
- * @author mfaour
+ * @author Khalil Bsaibes
  */
 import StockManagement.ObjectModel.ValueObject.User;
 import StockManagement.Services.companyClient;

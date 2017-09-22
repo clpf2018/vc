@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author mfaour
+ * @author Khalil Bsaibes
  */
 @Path("User")
 public class UserResource {

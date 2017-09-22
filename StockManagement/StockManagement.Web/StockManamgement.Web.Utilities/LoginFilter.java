@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author mfaour
+ * @author Khalil Bsaibes
  */
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"*.xhtml"})
 public class LoginFilter implements Filter{

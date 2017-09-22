@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mfaour
+ * @author Khalil Bsaibes
  */
 @ManagedBean(name="LoggedInUser")
 @RequestScoped
