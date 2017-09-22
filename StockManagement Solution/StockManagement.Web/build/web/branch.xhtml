@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./master/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="form">
+
+            <p:dataTable id="branchTable" value="#{branchBean.branches}" var="itemBranch" paginator="true" rows="10" 
+
+                         rowsPerPageTemplate="5,10,20"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">  
+                <f:facet name="header">  
+                    <div align="left">	
+                        <p:commandButton onclick="PF('newDialog').show();" type="button" value="New" icon="ui-icon-plus"  />
+                    </div>
+                </f:facet> 
+
+                <p:column headerText="Code">${itemBranch.brCode}</p:column>
+                <p:column headerText="Name">${itemBranch.brName}</p:column>
+                <p:column headerText="Address">${itemBranch.brAddress}</p:column>
+                <p:column headerText="Tel">${itemBranch.brTel}</p:column>
+                <p:column headerText="Status">${itemBranch.brStatus}</p:column>
+                
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":pnlInfo" oncomplete="PF('infoDialog').show()" icon="ui-icon-search" title="View">
+                        <f:setPropertyActionListener  value="#{itemBranch}" target="#{branchBean.selectedBranch}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":form:editPanel" icon="ui-icon ui-icon-pencil" oncomplete="PF('editDialog').show()" title="Edit company">
+                        <f:setPropertyActionListener value="#{itemBranch}" target="#{branchBean.selectedBranch}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":deletePanel" icon="ui-icon-trash" oncomplete="PF('deleteDialog').show()" title="Delete company">
+                        <f:setPropertyActionListener value="#{itemBranch}" target="#{branchBean.selectedBranch}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+            <p:dialog  header="New branch" widgetVar="newDialog" modal="true" height="150" resizable="false">
+                <p:outputPanel id="newPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+                        <h:outputText value="Name" />
+                        <p:inputText id="brName" value="#{branchBean.newBranch.brName}" />
+
+                        <h:outputText value="Address" />
+                        <p:inputText id="brAddress" value="#{branchBean.newBranch.brAddress}" />
+                        
+                          <h:outputText value="Tel" />
+                          <p:inputText id="brTel" value="#{branchBean.newBranch.brTel}" />
+                          
+                    </p:panelGrid>
+                    <p:commandButton id="btnAdd" update=":form:branchTable" oncomplete="PF('newDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{branchBean.add}"  />
+                    <p:blockUI block=":form:newPanel" trigger=":form:btnAdd">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </p:dialog> 
+        </h:form>
+    </ui:define>
+
+</ui:composition>

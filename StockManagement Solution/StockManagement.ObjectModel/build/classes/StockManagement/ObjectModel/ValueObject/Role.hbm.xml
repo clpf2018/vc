@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 10, 2017 10:15:43 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="StockManagement.ObjectModel.ValueObject.Role" table="Role" catalog="gestiondesbiens" optimistic-lock="version">
+        <id name="roCode" type="java.lang.Integer">
+            <column name="RoCode" />
+            <generator class="identity" />
+        </id>
+        <property name="roName" type="string">
+            <column name="RoName" length="45" />
+        </property>
+        <set name="userRoles" table="UserRole" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RoCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.UserRole" />
+        </set>
+        <set name="roleBranches" table="RoleBranch" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RoCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.RoleBranch" />
+        </set>
+        <set name="roleActions" table="RoleAction" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RoCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.RoleAction" />
+        </set>
+    </class>
+</hibernate-mapping>

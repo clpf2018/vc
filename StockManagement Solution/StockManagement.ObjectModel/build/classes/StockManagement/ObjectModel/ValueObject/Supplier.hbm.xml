@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 10, 2017 10:15:43 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="StockManagement.ObjectModel.ValueObject.Supplier" table="Supplier" catalog="gestiondesbiens" optimistic-lock="version">
+        <id name="supCode" type="java.lang.Integer">
+            <column name="SupCode" />
+            <generator class="identity" />
+        </id>
+        <property name="supName" type="string">
+            <column name="SupName" length="45" />
+        </property>
+        <property name="supTel" type="string">
+            <column name="SupTel" length="15" />
+        </property>
+        <property name="supMobile" type="string">
+            <column name="SupMobile" length="15" />
+        </property>
+        <property name="supAddress" type="string">
+            <column name="SupAddress" length="150" />
+        </property>
+        <property name="supEmail" type="string">
+            <column name="SupEmail" length="45" />
+        </property>
+        <set name="products" table="Product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SupCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.Product" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 10, 2017 10:15:43 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="StockManagement.ObjectModel.ValueObject.StockProduct" table="StockProduct" catalog="gestiondesbiens" optimistic-lock="version">
+        <id name="stkProductCode" type="java.lang.Integer">
+            <column name="StkProductCode" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="StockManagement.ObjectModel.ValueObject.Product" fetch="select">
+            <column name="PrCode" not-null="true" />
+        </many-to-one>
+        <many-to-one name="stock" class="StockManagement.ObjectModel.ValueObject.Stock" fetch="select">
+            <column name="StkCode" not-null="true" />
+        </many-to-one>
+        <property name="stkPrQty" type="int">
+            <column name="StkPrQty" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

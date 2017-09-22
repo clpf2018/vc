@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 10, 2017 10:15:43 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="StockManagement.ObjectModel.ValueObject.Product" table="Product" catalog="gestiondesbiens" optimistic-lock="version">
+        <id name="prCode" type="java.lang.Integer">
+            <column name="PrCode" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="brand" class="StockManagement.ObjectModel.ValueObject.Brand" fetch="select">
+            <column name="BrdCode" not-null="true" />
+        </many-to-one>
+        <many-to-one name="supplier" class="StockManagement.ObjectModel.ValueObject.Supplier" fetch="select">
+            <column name="SupCode" not-null="true" />
+        </many-to-one>
+        <property name="prBarCode" type="string">
+            <column name="PrBarCode" length="45" />
+        </property>
+        <property name="prName" type="string">
+            <column name="PrName" length="45" />
+        </property>
+        <property name="prType" type="java.lang.Integer">
+            <column name="PrType" />
+        </property>
+        <property name="prFamily" type="string">
+            <column name="PrFamily" length="45" />
+        </property>
+        <property name="prStatus" type="boolean">
+            <column name="PrStatus" not-null="true" />
+        </property>
+        <property name="prSeason" type="string">
+            <column name="PrSeason" length="45" />
+        </property>
+        <property name="costPrice" type="java.lang.Integer">
+            <column name="CostPrice" />
+        </property>
+        <property name="sellingPrice" type="java.lang.Integer">
+            <column name="SellingPrice" />
+        </property>
+        <set name="stockProducts" table="StockProduct" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PrCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.StockProduct" />
+        </set>
+        <set name="branchProducts" table="BranchProduct" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PrCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.BranchProduct" />
+        </set>
+    </class>
+</hibernate-mapping>

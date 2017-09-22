@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../master/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <ui:define name="content">
+        <h:form id="mainForm">
+
+            <p:dataTable id="companyTable" value="#{companyBean.companies}" var="itemCompany" paginator="true" rows="10" 
+                         selectionMode="single" selection="#{companyBean.selectedCompany}" rowKey="#{itemCompany.compCode}"
+                         rowsPerPageTemplate="5,10,20" 
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">  
+                <f:facet name="header">  
+                    <div align="left">	
+                        <p:commandButton onclick="PF('newDialog').show();" type="button" value="New" icon="ui-icon-plus"  />
+                    </div>
+                </f:facet> 
+                <p:ajax  id="showBranchesEvent" event="rowSelect" listener="#{companyBean.onRowSelect}" update=":branchForm:tabCompany:branchTable"  />
+
+                <p:column headerText="Code" class="tableHeader" >${itemCompany.compCode}</p:column>
+                <p:column headerText="Name" class="tableHeader">${itemCompany.compName}</p:column>
+                <p:column headerText="Desc" class="tableHeader">${itemCompany.compDesc}</p:column>
+                <p:column headerText="Creation date" class="tableHeader">${itemCompany.compCreationDate}</p:column>
+                <p:column style="width:32px;text-align: center">
+
+                    <p:commandButton update=":pnlInfo" oncomplete="PF('infoDialog').show()" icon="ui-icon-search" title="View">
+                        <f:setPropertyActionListener  value="#{itemCompany}" target="#{companyBean.selectedCompany}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":formUpdate:editPanel" icon="ui-icon ui-icon-pencil" oncomplete="PF('editDialog').show()" title="Edit company">
+                        <f:setPropertyActionListener value="#{itemCompany}" target="#{companyBean.selectedCompany}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":deletePanel" icon="ui-icon-trash" oncomplete="PF('deleteDialog').show()" title="Delete company">
+                        <f:setPropertyActionListener value="#{itemCompany}" target="#{companyBean.selectedCompany}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":formNewBranch:newBranchPanel" icon="ui-icon ui-icon-plus" title="Add branch" oncomplete="PF('newBranchDialog').show()" >
+                        <f:setPropertyActionListener value="#{itemCompany}" target="#{companyBean.selectedCompany}" />
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+            <p:blockUI block=":mainForm:companyTable" trigger=":mainForm:companyTable">
+                LOADING<br />
+                <p:graphicImage name="./images/45.gif" />
+            </p:blockUI>
+        </h:form>
+        <p:dialog  header="New company" widgetVar="newDialog" appendTo="@(body)" modal="true" height="120" resizable="false">
+            <h:form id="formAdd">  <p:outputPanel id="newPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value" >
+                        <h:outputText value="Name" />
+                        <p:inputText id="compName" value="#{companyBean.compName}" />
+
+                        <h:outputText value="Description" />
+                        <p:inputText id="compDesc" value="#{companyBean.compDesc}" />
+                    </p:panelGrid>
+                    <p:commandButton id="btnAdd" update=":mainForm:companyTable" oncomplete="PF('newDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{companyBean.add}"  />
+                    <p:blockUI block=":formAdd:newPanel" trigger=":formAdd:btnAdd">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+        <p:dialog header="Edit company" widgetVar="editDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <h:form id="formUpdate"> 
+                <p:outputPanel id="editPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{companyBean.selectedCompany != null}"  columnClasses="label,value">
+                        <h:outputText value="Code" />
+                        <p:inputText id="editcompCode" value="#{companyBean.selectedCompany.compCode}" />
+
+                        <h:outputText value="Name" />
+                        <p:inputText id="editcompName" value="#{companyBean.selectedCompany.compName}" />
+
+                        <h:outputText value="Description" />
+                        <p:inputText id="editcompDesc" value="#{companyBean.selectedCompany.compDesc}" />
+
+                    </p:panelGrid>
+
+                    <p:commandButton  id="btnUpdate" update=":mainForm:companyTable" oncomplete="PF('editDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{companyBean.update}"  />
+                    <p:blockUI block=":formUpdate:editPanel" trigger=":formUpdate:btnUpdate">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+        <p:dialog header="Company Info" widgetVar="infoDialog" appendTo="@(body)" modal="true" 
+                  showEffect="blind" hideEffect="explode" resizable="false">
+            <p:outputPanel id="pnlInfo" style="text-align:center;">
+                <p:panelGrid  columns="2" rendered="#{not empty companyBean.selectedCompany}" columnClasses="label,value">
+                    <f:facet name="header">
+                        <h:outputText value="Company" />
+                    </f:facet>
+                    <h:outputText value="Code" />
+                    <h:outputText value="#{companyBean.selectedCompany.compCode}" />
+
+                    <h:outputText value="Name" />
+                    <h:outputText value="#{companyBean.selectedCompany.compName}" />
+
+                    <h:outputText value="Description" />
+                    <h:outputText value="#{companyBean.selectedCompany.compDesc}"/>
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+        <p:dialog header="Delete company" widgetVar="deleteDialog" appendTo="@(body)" modal="true" 
+                  showEffect="blind" hideEffect="explode" resizable="false">
+            <p:outputPanel id="deletePanel" style="text-align:center;">
+                <p:panelGrid  columns="2" rendered="#{not empty companyBean.selectedCompany}" columnClasses="label,value">
+                    <f:facet name="header">
+                        <h:outputText value="Are you sure you?" />
+                    </f:facet>
+                    <h:outputText value="Code" />
+                    <h:outputText value="#{companyBean.selectedCompany.compCode}" />
+
+                    <h:outputText value="Name" />
+                    <h:outputText value="#{companyBean.selectedCompany.compName}" />
+
+                    <h:outputText value="Description" />
+                    <h:outputText value="#{companyBean.selectedCompany.compDesc}"/>
+                </p:panelGrid>
+                <p:commandButton id="btnDelete" update=":mainForm:companyTable" oncomplete="PF('deleteDialog').hide();" value="Delete?" icon="ui-icon-circle-check" actionListener="#{companyBean.delete}"  />
+                <p:blockUI block=":deletePanel" trigger=":btnDelete">
+                    LOADING<br />
+                    <p:graphicImage name="./images/45.gif" />
+                </p:blockUI>
+            </p:outputPanel>
+        </p:dialog>
+        <p:dialog  header="New branch" widgetVar="newBranchDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <h:form id="formNewBranch">
+                <p:outputPanel id="newBranchPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+                        <h:outputText value="Name" />
+                        <p:inputText id="brName" value="#{companyBean.newBranch.brName}" />
+
+                        <h:outputText value="Address" />
+                        <p:inputText id="brAddress" value="#{companyBean.newBranch.brAddress}" />
+
+                        <h:outputText value="Tel" />
+                        <p:inputText id="brTel" value="#{companyBean.newBranch.brTel}" />
+
+                    </p:panelGrid>
+                    <p:commandButton id="btnAddBranch" update=":branchForm:tabCompany:branchTable" oncomplete="PF('newBranchDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{companyBean.addBranch}"  />
+                    <p:blockUI block=":formNewBranch:newBranchPanel" trigger=":formNewBranch:btnAddBranch">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+    </ui:define>
+    <ui:define name="right" >
+
+        <h:form id="branchForm">
+            <p:accordionPanel id="tabCompany">
+                <p:tab title="Branches management">
+                    <h:panelGrid columns="1" >
+                        <p:carousel id="branchTable" value="#{companyBean.branches}"
+                                    var="itemBranch" itemStyle="height:150px;" 
+                                    numVisible="1" easing="easeOutBounce"  circular="true"  >
+                            <h:panelGrid columns="2" style="width:100%" columnClasses="label,value" class="tableHeader">
+                                <f:facet name="header">
+                                    <h:outputText value="#{itemBranch.brName}" />
+                                </f:facet>
+
+                                <h:outputText value="Code" />
+                                <h:outputText value="#{itemBranch.brCode}" style="color: blue"/>
+
+                                <h:outputText value="Address" />
+                                <h:outputText value="#{itemBranch.brAddress}" style="color: blue"/>
+
+                                <h:outputText value="Tel" />
+                                <h:outputText value="$#{itemBranch.brTel} " style="color: blue"/>
+
+                                <f:facet name="footer">
+                                    <p:commandButton update=":infoBranchPanel" oncomplete="PF('infoBranchDialog').show()" icon="ui-icon-search" title="View">
+                                        <f:setPropertyActionListener  value="#{itemBranch}" target="#{companyBean.selectedBranch}" />
+                                    </p:commandButton>
+                                    <p:commandButton update=":formEditBranch:editBranchPanel" oncomplete="PF('editBranchDialog').show()" icon="ui-icon-pencil" title="Edit">
+                                        <f:setPropertyActionListener  value="#{itemBranch}" target="#{companyBean.selectedBranch}" />
+                                    </p:commandButton>
+                                    <p:commandButton update=":deleteBranchPanel" oncomplete="PF('deleteBranchDialog').show()" icon="ui-icon-trash" title="Delete">
+                                        <f:setPropertyActionListener  value="#{itemBranch}" target="#{companyBean.selectedBranch}" />
+                                    </p:commandButton>
+                                    <p:commandButton id="btnViewRoles" update=":roleBranchPanel" oncomplete="PF('viewRoleBranchDialog').show()" icon="ui-icon-gear" title="View Roles">
+                                        <f:setPropertyActionListener  value="#{itemBranch}" target="#{companyBean.selectedBranch}" />
+                                    </p:commandButton>
+                                </f:facet>
+
+                            </h:panelGrid>
+                            <p:blockUI block=":branchForm:tabCompany:branchTable" trigger=":branchForm:tabCompany:branchTable:btnViewRoles">
+                                LOADING<br />
+                                <p:graphicImage name="./images/45.gif" />
+                            </p:blockUI>
+                        </p:carousel>
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="Stock management">
+                    <h:panelGrid columns="1" cellpadding="10">
+                        <h:outputText value="Stock management" />
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+        </h:form>
+        <p:dialog  header="Roles" widgetVar="viewRoleBranchDialog" appendTo="@(body)" modal="true" height="250" resizable="false">
+            <p:outputPanel id="roleBranchPanel" style="text-align:center;">
+                <h:form>
+                <p:pickList id="PojoPickList" value="#{companyBean.roles}" var="itemRole" 
+                            rendered="#{companyBean.roles!=null}"
+                            itemValue="#{itemRole}" itemLabel="#{itemRole.roName}"
+                            converter="roleConverter" >
+
+                    <f:facet name="sourceCaption">Current roles</f:facet>
+                    <f:facet name="targetCaption">All roles</f:facet>
+
+                    <p:ajax event="transfer" listener="#{companyBean.onTransfer}" update=":roleBranchPanel" />
+                </p:pickList>
+                    </h:form>
+            </p:outputPanel>
+        </p:dialog>
+        <p:dialog  header="Branch info" widgetVar="infoBranchDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <p:outputPanel id="infoBranchPanel" style="text-align:center;">
+                <p:panelGrid  columns="2"  columnClasses="label,value">
+                    <h:outputText value="Name" />
+                    <h:outputText id="brName" value="#{companyBean.selectedBranch.brName}" />
+
+                    <h:outputText value="Address" />
+                    <h:outputText id="brAddress" value="#{companyBean.selectedBranch.brAddress}" />
+
+                    <h:outputText value="Tel" />
+                    <h:outputText id="brTel" value="#{companyBean.selectedBranch.brTel}" />
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+        <p:dialog  header="Delete branch" widgetVar="deleteBranchDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <p:outputPanel id="deleteBranchPanel" style="text-align:center;">
+                <p:panelGrid  columns="2"  columnClasses="label,value">
+                    <h:outputText value="Name" />
+                    <h:outputText  value="#{companyBean.selectedBranch.brName}" />
+
+                    <h:outputText value="Address" />
+                    <h:outputText  value="#{companyBean.selectedBranch.brAddress}" />
+
+                    <h:outputText value="Tel" />
+                    <h:outputText  value="#{companyBean.selectedBranch.brTel}" />
+                </p:panelGrid>
+                <p:commandButton id="btnDeleteBranch" update=":branchForm:tabCompany:branchTable" oncomplete="PF('deleteBranchDialog').hide();" value="Delete?" icon="ui-icon-circle-check" actionListener="#{companyBean.deleteBranch}"  />
+                <p:blockUI block=":deleteBranchPanel" trigger=":btnDeleteBranch">
+                    LOADING<br />
+                    <p:graphicImage name="./images/45.gif" />
+                </p:blockUI>
+            </p:outputPanel>
+        </p:dialog>
+        <p:dialog  header="Edit branch" widgetVar="editBranchDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <h:form id="formEditBranch">
+                <p:outputPanel id="editBranchPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+                        <h:outputText value="Name" />
+                        <p:inputText id="brName" value="#{companyBean.selectedBranch.brName}" />
+
+                        <h:outputText value="Address" />
+                        <p:inputText id="brAddress" value="#{companyBean.selectedBranch.brAddress}" />
+
+                        <h:outputText value="Tel" />
+                        <p:inputText id="brTel" value="#{companyBean.selectedBranch.brTel}" />
+                    </p:panelGrid>
+                    <p:commandButton id="btnEditBranch" update=":branchForm:tabCompany:branchTable" oncomplete="PF('editBranchDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{companyBean.updateBranch}"  />
+                    <p:blockUI block=":formEditBranch:editBranchPanel" trigger=":formEditBranch:btnEditBranch">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+    </ui:define>
+
+
+
+</ui:composition>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 10, 2017 10:15:43 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="StockManagement.ObjectModel.ValueObject.Action" table="Action" catalog="gestiondesbiens" optimistic-lock="version">
+        <id name="actCode" type="java.lang.Integer">
+            <column name="ActCode" />
+            <generator class="identity" />
+        </id>
+        <property name="actName" type="string">
+            <column name="ActName" length="45" not-null="true" />
+        </property>
+        <property name="actDescription" type="string">
+            <column name="ActDescription" length="145" />
+        </property>
+        <set name="roleActions" table="RoleAction" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ActCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.RoleAction" />
+        </set>
+    </class>
+</hibernate-mapping>
