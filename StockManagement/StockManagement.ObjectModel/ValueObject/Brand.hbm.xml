@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 10, 2017 10:15:43 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="StockManagement.ObjectModel.ValueObject.Brand" table="Brand" catalog="gestiondesbiens" optimistic-lock="version">
+        <id name="brdCode" type="java.lang.Integer">
+            <column name="BrdCode" />
+            <generator class="identity" />
+        </id>
+        <property name="brdName" type="string">
+            <column name="BrdName" length="45" />
+        </property>
+        <property name="brdCreationDate" type="timestamp">
+            <column name="BrdCreationDate" length="19" not-null="true" />
+        </property>
+        <property name="brdStatus" type="boolean">
+            <column name="BrdStatus" not-null="true" />
+        </property>
+        <set name="products" table="Product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BrdCode" not-null="true" />
+            </key>
+            <one-to-many class="StockManagement.ObjectModel.ValueObject.Product" />
+        </set>
+    </class>
+</hibernate-mapping>
