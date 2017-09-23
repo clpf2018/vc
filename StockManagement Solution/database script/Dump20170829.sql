@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `gestiondesbiens` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `gestiondesbiens`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: 35.189.250.88    Database: gestiondesbiens
@@ -23,7 +21,7 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 -- GTID state at the beginning of the backup 
 --
 
-
+SET @@GLOBAL.GTID_PURGED='c5a2ecc2-72a7-11e7-bb56-42010a840315:1-4921547';
 
 --
 -- Table structure for table `Action`
@@ -149,6 +147,7 @@ CREATE TABLE `Client` (
   `SendMessage` bit(1) NOT NULL DEFAULT b'1',
   `SendCatalog` bit(1) NOT NULL DEFAULT b'1',
   `CltCreationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `CltAdress` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`CltCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,6 +159,49 @@ CREATE TABLE `Client` (
 LOCK TABLES `Client` WRITE;
 /*!40000 ALTER TABLE `Client` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Client` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Invoice`
+--
+
+DROP TABLE IF EXISTS `Invoice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Invoice` (
+  `InvCode` int(11) NOT NULL,
+  `CompCode` int(11) NOT NULL,
+  `PrCode` int(11) NOT NULL,
+  `TrCode` int(11) NOT NULL,
+  `InvDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `BrCode` int(11) NOT NULL,
+  `InvQty` int(11) NOT NULL,
+  `InvDbCr` bit(1) NOT NULL,
+  `SellingPrice` int(11) NOT NULL,
+  `Value` int(11) NOT NULL,
+  `Discount` int(11) DEFAULT '0',
+  `CltCode` int(11) NOT NULL,
+  PRIMARY KEY (`InvCode`),
+  KEY `CompCode7_idx` (`CompCode`),
+  KEY `PrCode7_idx` (`PrCode`),
+  KEY `TrCode2_idx` (`TrCode`),
+  KEY `BrCode7_idx` (`BrCode`),
+  KEY `CltCode7_idx` (`CltCode`),
+  CONSTRAINT `BrCode7` FOREIGN KEY (`BrCode`) REFERENCES `Branch` (`BrCode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `CltCode7` FOREIGN KEY (`CltCode`) REFERENCES `Client` (`CltCode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `CompCode7` FOREIGN KEY (`CompCode`) REFERENCES `company` (`CompCode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `PrCode7` FOREIGN KEY (`PrCode`) REFERENCES `Product` (`PrCode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `TrCode2` FOREIGN KEY (`TrCode`) REFERENCES `TransactionType` (`TrCode`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Invoice`
+--
+
+LOCK TABLES `Invoice` WRITE;
+/*!40000 ALTER TABLE `Invoice` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Invoice` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -179,6 +221,7 @@ CREATE TABLE `Order` (
   `PrCode` int(11) NOT NULL,
   `CompCode` int(11) NOT NULL,
   `UsrCode` int(11) NOT NULL,
+  `OrdDbCr` int(11) NOT NULL,
   PRIMARY KEY (`OrdCode`),
   KEY `TrCode_idx` (`TrCode`),
   KEY `CompCode_idx` (`CompCode`),
@@ -186,7 +229,7 @@ CREATE TABLE `Order` (
   CONSTRAINT `CompCode4` FOREIGN KEY (`CompCode`) REFERENCES `company` (`CompCode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `TrCode` FOREIGN KEY (`TrCode`) REFERENCES `TransactionType` (`TrCode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `UsrCode5` FOREIGN KEY (`UsrCode`) REFERENCES `User` (`UsrCode`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,6 +238,7 @@ CREATE TABLE `Order` (
 
 LOCK TABLES `Order` WRITE;
 /*!40000 ALTER TABLE `Order` DISABLE KEYS */;
+INSERT INTO `Order` VALUES (1,'2017-09-17 14:51:53',1,1,1,1,1,1,1,1),(2,'2017-09-17 14:52:35',2,2,2,2,2,1,1,2),(3,'2017-09-17 14:51:53',1,1,1,1,1,1,1,1),(4,'2017-09-17 14:51:53',1,1,1,1,1,1,1,1),(5,'2017-09-17 14:52:35',2,2,2,2,2,1,1,2),(6,'2017-09-17 14:52:35',2,2,2,2,2,1,1,2);
 /*!40000 ALTER TABLE `Order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -495,7 +539,7 @@ CREATE TABLE `company` (
   `CompCreationDate` date DEFAULT NULL,
   `CompStatus` int(11) DEFAULT NULL,
   PRIMARY KEY (`CompCode`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -504,9 +548,33 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (1,'Nike','Nike company','2017-07-27',1),(2,'alich','test alich','1970-01-01',1),(3,'Samsung','Samsung desc2 updated ','2017-07-27',1),(5,'C2','C2 desc','2017-07-27',1),(6,'C3','C3 desc','2017-07-27',1),(18,'C4','C4 desc',NULL,1),(19,'C5','C5',NULL,1),(21,'C6','C6',NULL,1),(22,'abc','abc',NULL,1);
+INSERT INTO `company` VALUES (1,'Nike','Nike company','2017-07-27',1),(2,'alich','test alich','1970-01-01',1),(3,'Samsung','Samsung desc2 updated ','2017-07-27',1),(5,'C2','C2 desc','2017-07-27',1),(6,'C3','C3 desc','2017-07-27',1),(18,'C4','C4 desc',NULL,1),(19,'C5','C5',NULL,1),(21,'C6','C6',NULL,1),(22,'abc','abc',NULL,1),(24,'www','wwww',NULL,1);
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'gestiondesbiens'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `product_get` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`mfaour`@`%` PROCEDURE `product_get`(In status int)
+BEGIN
+
+select * from Product where prStatus = status or status = -1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -518,4 +586,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-29 11:04:13
+-- Dump completed on 2017-09-22 20:31:04

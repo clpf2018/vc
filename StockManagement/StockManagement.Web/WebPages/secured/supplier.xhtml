@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../master/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form id="mainForm">
+            <p:dataTable id="supplierTable" value="#{supplierBean.suppliers}" var="supplier" paginator="true" rows="10" 
+                         selectionMode="single" selection="#{supplierBean.selectedSupplier}" rowKey="#{supplier.supCode }"
+                         rowsPerPageTemplate="5,10,20" 
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">  
+                <f:facet name="header">  
+                    <div align="left">	
+                        <p:commandButton onclick="PF('newDialog').show();" type="button" value="New" icon="ui-icon-plus"  />
+                    </div>
+                </f:facet> 
+                <p:column headerText="Code" class="tableHeader">${supplier.supCode}</p:column>
+
+                <p:column headerText="Name" class="tableHeader" >${supplier.supName}</p:column>
+                <p:column headerText="Mobile" class="tableHeader">${supplier.supMobile}</p:column>
+                <p:column headerText="Tel" class="tableHeader">${supplier.supTel}</p:column>
+                <p:column headerText="Addresse" class="tableHeader">${supplier.supAddress}</p:column>
+                <p:column headerText="Email" class="tableHeader">${supplier.supEmail}</p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":formUpdate:editPanel" icon="ui-icon ui-icon-pencil" oncomplete="PF('editDialog').show()" title="Edit supplier">
+                        <f:setPropertyActionListener value="#{supplier}" target="#{supplierBean.selectedSupplier}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton icon="ui-icon ui-icon-search"  action="product" title="View products">
+                        
+                        <f:param id="sup_id"  name="sup_id" value="#{supplier.supCode}"  />
+                    </p:commandButton >
+                </p:column>
+            </p:dataTable>
+            <p:blockUI block=":mainForm:supplierTable" trigger=":mainForm:supplierTable">
+                LOADING<br />
+                <p:graphicImage name="./images/45.gif" />
+            </p:blockUI>
+        </h:form>
+        <p:dialog  header="New supplier" widgetVar="newDialog" appendTo="@(body)" modal="true" height="220" resizable="false">
+            <h:form id="formAdd">  
+                <p:outputPanel id="newPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value" >
+                        <h:outputText value="Name" />
+                        <p:inputText id="supName" value="#{supplierBean.newSupplier.supName}" />
+
+                        <h:outputText value="Address" />
+                        <p:inputText id="supAddress" value="#{supplierBean.newSupplier.supAddress}" />
+
+                        <h:outputText value="Email" />
+                        <p:inputText id="supEmail" value="#{supplierBean.newSupplier.supEmail}" />
+
+                        <h:outputText value="mobile" />
+                        <p:inputText id="supMobile" value="#{supplierBean.newSupplier.supMobile}" />
+
+                        <h:outputText value="Tel" />
+                        <p:inputText id="supTel" value="#{supplierBean.newSupplier.supTel}" />
+
+                    </p:panelGrid>
+                    <p:commandButton id="btnAdd" update=":mainForm:supplierTable" oncomplete="PF('newDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{supplierBean.add}"  />
+                    <p:blockUI block=":formAdd:newPanel" trigger=":formAdd:btnAdd">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+        <p:dialog header="Edit supplier" widgetVar="editDialog" appendTo="@(body)" modal="true" height="220" resizable="false">
+            <h:form id="formUpdate"> 
+                <p:outputPanel id="editPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{supplierBean.selectedSupplier != null}"  columnClasses="label,value">
+                        <h:outputText value="Name" />
+                        <p:inputText id="editsupName" value="#{supplierBean.selectedSupplier.supName}" />
+
+                        <h:outputText value="Address" />
+                        <p:inputText id="editsupAddress" value="#{supplierBean.selectedSupplier.supAddress}" />
+
+                        <h:outputText value="Email" />
+                        <p:inputText id="editsupEmail" value="#{supplierBean.selectedSupplier.supEmail}" />
+
+                        <h:outputText value="mobile" />
+                        <p:inputText id="editsupMobile" value="#{supplierBean.selectedSupplier.supMobile}" />
+
+                        <h:outputText value="Tel" />
+                        <p:inputText id="editsupTel" value="#{supplierBean.selectedSupplier.supTel}" />
+                    </p:panelGrid>
+                    <p:commandButton   id="btnUpdate" update=":mainForm:supplierTable" oncomplete="PF('editDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{supplierBean.update}"  />
+                    <p:blockUI block=":formUpdate:editPanel" trigger=":formUpdate:btnUpdate">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+    </ui:define>
+
+</ui:composition>

@@ -13,7 +13,11 @@ import StockManagement.ObjectModel.ValueObject.BranchProduct;
 import StockManagement.ObjectModel.ObjectInterface.IProduct;
 import StockManagement.ObjectModel.Utilities.HibernateUtil;
 import StockManagement.ObjectModel.Utilities.StatusEnum;
+import StockManagement.ObjectModel.ValueObject.Brand;
+import StockManagement.ObjectModel.ValueObject.Supplier;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -29,7 +33,7 @@ public class ProductController implements IProduct {
 
     public ProductController() {
         _sessionFactory = HibernateUtil.getSessionFactory();
-         _session = _sessionFactory.openSession();
+        _session = _sessionFactory.openSession();
     }
 
     @Override
@@ -38,7 +42,19 @@ public class ProductController implements IProduct {
         if (null == objProduct) {
             return null;
         }
-        return (Product) objProduct;
+        Product original = (Product) objProduct;
+        Product copy = new Product();
+        copy.setCostPrice(original.getCostPrice());
+        copy.setPrBarCode(original.getPrBarCode());
+        copy.setPrCode(original.getPrCode());
+        copy.setPrFamily(original.getPrFamily());
+        copy.setPrName(original.getPrName());
+        copy.setPrSeason(original.getPrSeason());
+        copy.setPrStatus(original.isPrStatus());
+        copy.setPrType(original.getPrType());
+        copy.setSellingPrice(original.getSellingPrice());
+
+        return copy;
     }
 
     @Override
@@ -78,11 +94,79 @@ public class ProductController implements IProduct {
 
     @Override
     public List<Product> getBySupplier(int supCode) {
-        List<Product> products = _session.createQuery("From Product where SupCode = " + supCode).list();
+        List<Product> products = _session.createQuery("From Product where supCode = " + supCode).list();
         if (null == products || products.isEmpty()) {
             return null;
         }
+        List<Product> newList = new ArrayList();
+        for (int i = 0; i < products.size(); i++) {
+            Product original = products.get(i);
+            Product copy = new Product();
+            copy.setCostPrice(original.getCostPrice());
+            copy.setPrBarCode(original.getPrBarCode());
+            copy.setPrCode(original.getPrCode());
+            copy.setPrFamily(original.getPrFamily());
+            copy.setPrName(original.getPrName());
+            copy.setPrSeason(original.getPrSeason());
+            copy.setPrStatus(original.isPrStatus());
+            copy.setPrType(original.getPrType());
+            copy.setSellingPrice(original.getSellingPrice());
+            newList.add(copy);
+        }
+        return newList;
+
+    }
+
+    @Override
+    public List<StockProduct> getStockProductByStock(int stkCode) {
+        List<StockProduct> products = _session.createQuery("from StockProduct where stkCode = " + stkCode).list();
+        if (null == products || products.isEmpty()) {
+            return null;
+        }
+
+        for (int i = 0; i < products.size(); i++) {
+            StockProduct sp = new StockProduct();
+            sp.setStkPrQty(products.get(i).getStkPrQty());
+        }
         return products;
+    }
+
+    @Override
+    public List<Product> getByStock(int stkCode) {
+        List<Product> products = _session.createQuery("select P from Product P,StockProduct SP where P.prCode= SP.product.prCode and SP.stock.stkCode = " + stkCode).list();
+        if (null == products || products.isEmpty()) {
+            return null;
+        }
+        List<Product> newList = new ArrayList();
+        for (int i = 0; i < products.size(); i++) {
+            Product original = products.get(i);
+            Product copy = new Product();
+            copy.setCostPrice(original.getCostPrice());
+            copy.setPrBarCode(original.getPrBarCode());
+            copy.setPrCode(original.getPrCode());
+            copy.setPrFamily(original.getPrFamily());
+            copy.setPrName(original.getPrName());
+            copy.setPrSeason(original.getPrSeason());
+            copy.setPrStatus(original.isPrStatus());
+            copy.setPrType(original.getPrType());
+            copy.setSellingPrice(original.getSellingPrice());
+            Set spObject = original.getStockProducts();
+            StockProduct sp = null;
+            if (spObject != null && !spObject.isEmpty()) {
+                sp = (StockProduct) spObject.iterator().next();
+            }
+            if (sp != null) {
+                copy.setPrQty(sp.getStkPrQty());
+            }
+
+            Supplier supObject = original.getSupplier();
+            if (supObject != null) {
+                copy.setSupplierName(supObject.getSupName());
+            }
+
+            newList.add(copy);
+        }
+        return newList;
     }
 
     @Override
@@ -138,11 +222,11 @@ public class ProductController implements IProduct {
     }
 
     @Override
-    public boolean addToStock(StockProduct stockproduct ) {
+    public boolean addToStock(StockProduct stockproduct) {
         try {
-            if (null == stockproduct ||
-                    null == stockproduct.getStock() ||
-                    null == stockproduct.getProduct() ) {
+            if (null == stockproduct
+                    || null == stockproduct.getStock()
+                    || null == stockproduct.getProduct()) {
                 return false;
             }
             Transaction tx = _session.beginTransaction();
@@ -175,9 +259,9 @@ public class ProductController implements IProduct {
     @Override
     public boolean addToBranch(BranchProduct branchProduct) {
         try {
-          if (null == branchProduct ||
-                    null == branchProduct.getBranch()||
-                    null == branchProduct.getProduct() ) {
+            if (null == branchProduct
+                    || null == branchProduct.getBranch()
+                    || null == branchProduct.getProduct()) {
                 return false;
             }
             Transaction tx = _session.beginTransaction();
@@ -205,7 +289,7 @@ public class ProductController implements IProduct {
     public boolean delete(int prCode) {
         try {
             Transaction tx = _session.beginTransaction();
-            _session.createQuery("delete from Product where PrCode= " + prCode).executeUpdate();
+            _session.createQuery("delete from Product where prCode= " + prCode).executeUpdate();
             tx.commit();
             return true;
         } catch (Exception e) {
@@ -215,7 +299,7 @@ public class ProductController implements IProduct {
 
     @Override
     public boolean update(Product product) {
-         try {
+        try {
             Transaction tx = _session.beginTransaction();
             _session.update(product);
             tx.commit();
@@ -223,6 +307,27 @@ public class ProductController implements IProduct {
         } catch (Exception e) {
             throw (e);
         }
+    }
+
+    @Override
+    public List<Brand> getAllBrands() {
+        BrandController controller = new BrandController();
+        return controller.getAll();
+    }
+
+    @Override
+    public Stock getStock(int stkCode) {
+        List<Stock> stocks = _session.createQuery("From Stock where stkCode = " + stkCode).list();
+        if (null == stocks || stocks.isEmpty()) {
+            return null;
+        }
+        Stock original = stocks.get(0);
+        Stock copy = new Stock();
+        copy.setStkAddress(original.getStkAddress());
+        copy.setStkCode(original.getStkCode());
+        copy.setStkName(original.getStkName());
+        copy.setStkTel(original.getStkTel());
+        return copy;
     }
 
 }

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../master/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <h:form id="mainForm">
+            <p:dataTable id="companyTable" value="#{stockBean.products}" var="itemProduct" paginator="true" rows="10" 
+                         selectionMode="single" selection="#{stockBean.selectedProduct}" rowKey="#{itemProduct.prCode }"
+                         rowsPerPageTemplate="5,10,20" 
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">  
+                <f:facet name="header">  
+                    <div align="left">	
+                        <p:commandButton onclick="PF('newDialog').show();" type="button" value="New" icon="ui-icon-plus"  />
+                    </div>
+                </f:facet> 
+
+                <p:column headerText="Product Code" class="tableHeader" >${itemProduct.prCode}</p:column>
+                <p:column headerText="Name" class="tableHeader">${itemProduct.prName}</p:column>
+                <p:column headerText="Cost price" class="tableHeader">${itemProduct.costPrice}</p:column>
+                <p:column headerText="Selling price" class="tableHeader">${itemProduct.sellingPrice}</p:column>
+                <p:column headerText="Quantity" class="tableHeader">${itemProduct.prQty}</p:column>
+                <p:column headerText="Supplier name" class="tableHeader">${itemProduct.supplierName}</p:column>
+               
+            </p:dataTable>
+            <p:blockUI block=":mainForm:companyTable" trigger=":mainForm:companyTable">
+                LOADING<br />
+                <p:graphicImage name="./images/45.gif" />
+            </p:blockUI>
+        </h:form>
+        <p:dialog  header="Add product" widgetVar="newDialog" appendTo="@(body)" modal="true" height="120" resizable="false">
+            <h:form id="formAdd"> 
+                <p:outputPanel id="newPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value" >
+                        <h:outputText value="Supplier name" />
+                        <p:selectOneMenu  id="supplier" value="#{stockBean.supCode}" style="width:150px">
+                            <f:selectItems value="#{stockBean.suppliers}" var="supplier" 
+                                           itemLabel="#{supplier.supName}" itemValue="#{supplier.supCode}" />
+                            <p:ajax listener="#{stockBean.onSupplierChange}" update="products" />
+                        </p:selectOneMenu>
+                        <h:outputText value="Product" />
+                        <p:selectOneMenu  id="products" value="#{stockBean.prCode}" style="width:150px">
+                            <f:selectItems value="#{stockBean.supplierProducts}" var="product" 
+                                           itemLabel="#{product.prName}" itemValue="#{product.prCode}" />
+                        </p:selectOneMenu>
+                        <h:outputText value="Quantity" />
+                        <p:inputText id="quantity" value="#{stockBean.qunatity}" />
+                    </p:panelGrid>
+                    <p:commandButton id="btnAdd" update=":mainForm:companyTable" oncomplete="PF('newDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{stockBean.addToStock}"  />
+                    <p:blockUI block=":formAdd:newPanel" trigger=":formAdd:btnAdd">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+      
+    </ui:define>
+
+</ui:composition>
