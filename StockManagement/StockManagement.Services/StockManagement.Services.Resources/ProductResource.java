@@ -10,7 +10,10 @@ import StockManagement.ObjectModel.ValueObject.Product;
 import StockManagement.ObjectModel.ObjectInterface.IProduct;
 import StockManagement.ObjectModel.Utilities.StatusEnum;
 import StockManagement.ObjectModel.ValueObject.BranchProduct;
+import StockManagement.ObjectModel.ValueObject.Brand;
+import StockManagement.ObjectModel.ValueObject.Stock;
 import StockManagement.ObjectModel.ValueObject.StockProduct;
+import StockManagement.ObjectModel.ValueObject.Supplier;
 import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -35,6 +38,14 @@ public class ProductResource {
         // throw (new Exception("Not implemented exception"));
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+     @Path("/suppliers")
+    public List<Supplier> getAllSuppliers() {
+       SupplierResource supplier = new SupplierResource();
+       return supplier.getAll();
+    }
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/code/{prCode}")
@@ -70,6 +81,36 @@ public class ProductResource {
         return _controller.getBySupplier(supCode);
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Path("/getByStock/{stkCode}")
+    public List<Product> getByStock(@PathParam("stkCode") int stkCode) {
+        return _controller.getByStock(stkCode);
+    }
+      @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Path("/Brands")
+    public List<Brand> getAllBrands() {
+        return _controller.getAllBrands();
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Path("/getStockProducts/{stkCode}")
+    public List<StockProduct> getStockProducts(@PathParam("stkCode") int stkCode) {
+        return _controller.getStockProductByStock(stkCode);
+    }
+    
+      @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/getStock/{stkCode}")
+    public Stock getStock(@PathParam("stkCode") int stkCode) {
+        return _controller.getStock(stkCode);
+    }
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getByBrand/{brdCode}")
@@ -108,18 +149,18 @@ public class ProductResource {
         return _controller.addToBranch(branchProduct);
     }
 
-    @POST
+    /*@POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/delete")
     public boolean delete(Product product) {
         return _controller.delete(product);
-    }
+    }*/
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/deleteById")
+    @Path("/delete")
     public boolean delete(int prCode) {
         return _controller.delete(prCode);
     }
