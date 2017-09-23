@@ -31,6 +31,12 @@ public class userClient {
         client = javax.ws.rs.client.ClientBuilder.newClient();
         webTarget = client.target(BASE_URI).path("User");
     }
+    
+    public <T> T get(Class<T> responseType, Integer usrCode) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("code/{0}", new Object[]{usrCode}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
 
     public <T> T add(Object requestEntity, Class<T> responseType) throws ClientErrorException {
         return webTarget.path("add").request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON), responseType);
