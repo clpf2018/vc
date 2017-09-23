@@ -10,6 +10,10 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 
+ * @author ali chreif
+ */
 public class SessionUtils {
 
 	public static HttpSession getSession() {
@@ -27,7 +31,7 @@ public class SessionUtils {
 				.getExternalContext().getSession(false);
 		return session.getAttribute("username").toString();
 	}
-
+ 
 	public static String getUserId() {
 		HttpSession session = getSession();
 		if (session != null)
