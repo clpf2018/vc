@@ -15,6 +15,7 @@ import javax.ws.rs.core.GenericType;
 /**
  * 
  * @author ali chreif
+ * order client
  */
 @ManagedBean(name="orderClient")
 @ApplicationScoped
