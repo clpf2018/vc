@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author mikermaily
+ * @author MikeRmaily
  */
 @Path("Brand")
 public class BrandResource {
@@ -29,7 +29,8 @@ public class BrandResource {
     @Produces(MediaType.APPLICATION_JSON)
     //@Path("/all")
     public List<Brand> getAll() {
-        return _controller.getAll();
+        List<Brand> brands = _controller.getAll();
+        return brands;
     }
 
     @GET
@@ -56,60 +57,60 @@ public class BrandResource {
         return _controller.update(brand);
     }
 
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/delete")
-    public boolean delete(Brand brand) {
-        return _controller.delete(brand);
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/products/{brdCode}")
-    public List<Product> getProducts(@PathParam("brdCode") int brdCode) {
-        return _controller.getProducts(brdCode);
-    }
-
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/deleteById")
-    public boolean delete(int brdCode) {
-        return _controller.delete(brdCode);
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/addProduct")
-    public int addProduct(Product product) {
-        return _controller.addProduct(product);
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/deleteProduct")
-    public boolean deleteProduct(Product product) {
-        return _controller.deleteProduct(product);
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/deleteProductById")
-    public boolean deleteProduct(int prCode) {
-        return _controller.deleteProduct(prCode);
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/updateProduct")
-    public boolean updateProduct(Product product) {
-        return _controller.updateProduct(product);
-    }
+//    @PUT
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/delete")
+//    public boolean delete(Brand brand) {
+//        return _controller.delete(brand);
+//    }
+//
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Path("/products/{brdCode}")
+//    public List<Product> getProducts(@PathParam("brdCode") int brdCode) {
+//        return _controller.getProducts(brdCode);
+//    }
+//
+//    @PUT
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/deleteById")
+//    public boolean delete(int brdCode) {
+//        return _controller.delete(brdCode);
+//    }
+//
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/addProduct")
+//    public int addProduct(Product product) {
+//        return _controller.addProduct(product);
+//    }
+//
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/deleteProduct")
+//    public boolean deleteProduct(Product product) {
+//        return _controller.deleteProduct(product);
+//    }
+//
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/deleteProductById")
+//    public boolean deleteProduct(int prCode) {
+//        return _controller.deleteProduct(prCode);
+//    }
+//
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("/updateProduct")
+//    public boolean updateProduct(Product product) {
+//        return _controller.updateProduct(product);
+//    }
 
 }
