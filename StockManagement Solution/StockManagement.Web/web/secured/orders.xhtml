@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../master/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <ui:define name="content">
+        <h:form id="mainForm">
+
+            <p:dataTable id="ordersTable" value="#{ordersBean.orders}" var="itemOrder" paginator="true" rows="10" 
+                         selectionMode="single" selection="#{ordersBean.selectedOrder}" rowKey="#{itemOrder.ordCode}"
+                         rowsPerPageTemplate="5,10,20" 
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">  
+                <f:facet name="header">  
+                    <div align="left">	
+                        <p:commandButton onclick="PF('newDialog').show();" type="button" value="New" icon="ui-icon-plus"  />
+                    </div>
+                </f:facet> 
+
+                <p:column headerText="Order Code" class="tableHeader" >${itemOrder.ordCode}</p:column>
+                <p:column headerText="Order date" class="tableHeader">${itemOrder.ordDate}</p:column>
+                <p:column headerText="Order quantity" class="tableHeader">${itemOrder.ordQty}</p:column>
+                <p:column headerText="Order source" class="tableHeader">${itemOrder.ordSource}</p:column>
+                <p:column headerText="Order destination" class="tableHeader">${itemOrder.ordDestination}</p:column>
+
+                <p:column style="width:32px;text-align: center">
+
+                    <p:commandButton update=":pnlInfo" oncomplete="PF('infoDialog').show()" icon="ui-icon-search" title="View">
+                        <f:setPropertyActionListener  value="#{itemOrder}" target="#{ordersBean.selectedOrder}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":formUpdate:editPanel" icon="ui-icon ui-icon-pencil" oncomplete="PF('editDialog').show()" title="Edit order">
+                        <f:setPropertyActionListener value="#{itemOrder}" target="#{ordersBean.selectedOrder}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":deletePanel" icon="ui-icon-trash" oncomplete="PF('deleteDialog').show()" title="Delete order">
+                        <f:setPropertyActionListener value="#{itemOrder}" target="#{ordersBean.selectedOrder}" />
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+            <p:blockUI block=":mainForm:ordersTable" trigger=":mainForm:ordersTable">
+                LOADING<br />
+                <p:graphicImage name="./images/45.gif" />
+            </p:blockUI>
+        </h:form>
+        <p:dialog  header="New order" widgetVar="newDialog" appendTo="@(body)" modal="true" height="120" resizable="false">
+            <h:form id="formAdd">  <p:outputPanel id="newPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value" >
+                        <h:outputText value="Code" />
+                        <p:inputText id="orderCode" value="#{ordersBean.orderCode}" />
+
+                        <h:outputText value="Source" />
+                        <p:inputText id="orderSrc" value="#{ordersBean.orderSrc}" />
+                        
+                        <h:outputText value="Destination" />
+                        <p:inputText id="orderDest" value="#{ordersBean.orderDest}" />
+                        
+                        <h:outputText value="Transaction code" />
+                        <p:inputText id="orderTrCode" value="#{ordersBean.orderTrCode}" />
+                        
+                        <h:outputText value="Order quantity" />
+                        <p:inputText id="orderQty" value="#{ordersBean.orderQty}" />
+                        
+                        <h:outputText value="Order pr code" />
+                        <p:inputText id="orderPrCode" value="#{ordersBean.orderPrCode}" />
+                        
+                        <h:outputText value="Order debit/ credit" />
+                        <p:inputText id="orderDbCr" value="#{ordersBean.orderDbCr}" />
+                    </p:panelGrid>
+                    <p:commandButton id="btnAdd" update=":mainForm:ordersTable" oncomplete="PF('newDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{ordersBean.add}"  />
+                    <p:blockUI block=":formAdd:newPanel" trigger=":formAdd:btnAdd">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+        <p:dialog header="Edit company" widgetVar="editDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <h:form id="formUpdate"> 
+                <p:outputPanel id="editPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{companyBean.selectedCompany != null}"  columnClasses="label,value">
+                        <h:outputText value="Code" />
+                        <p:inputText id="orderCode" value="#{ordersBean.orderCode}" />
+
+                        <h:outputText value="Source" />
+                        <p:inputText id="orderSrc" value="#{ordersBean.orderSrc}" />
+                        
+                        <h:outputText value="Destination" />
+                        <p:inputText id="orderDest" value="#{ordersBean.orderDest}" />
+                        
+                        <h:outputText value="Transaction code" />
+                        <p:inputText id="orderTrCode" value="#{ordersBean.orderTrCode}" />
+                        
+                        <h:outputText value="Order quantity" />
+                        <p:inputText id="orderQty" value="#{ordersBean.orderQty}" />
+                        
+                        <h:outputText value="Order pr code" />
+                        <p:inputText id="orderPrCode" value="#{ordersBean.orderPrCode}" />
+                        
+                        <h:outputText value="Order debit/ credit" />
+                        <p:inputText id="orderDbCr" value="#{ordersBean.orderDbCr}" />
+
+                    </p:panelGrid>
+
+                    <p:commandButton  id="btnUpdate" update=":mainForm:ordersTable" oncomplete="PF('editDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{ordersBean.update}"  />
+                    <p:blockUI block=":formUpdate:editPanel" trigger=":formUpdate:btnUpdate">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+        <p:dialog header="Company Info" widgetVar="infoDialog" appendTo="@(body)" modal="true" 
+                  showEffect="blind" hideEffect="explode" resizable="false">
+            <p:outputPanel id="pnlInfo" style="text-align:center;">
+                <p:panelGrid  columns="2" rendered="#{not empty ordersBean.selectedOrder}" columnClasses="label,value">
+                    <f:facet name="header">
+                        <h:outputText value="Company" />
+                    </f:facet>
+                    <h:outputText value="Code" />
+                    <h:outputText id="orderCode" value="#{ordersBean.orderCode}" />
+
+                    <h:outputText value="Source" />
+                    <h:outputText id="orderSrc" value="#{ordersBean.orderSrc}" />
+                        
+                    <h:outputText value="Destination" />
+                    <h:outputText id="orderDest" value="#{ordersBean.orderDest}" />
+                        
+                    <h:outputText value="Transaction code" />
+                    <h:outputText id="orderTrCode" value="#{ordersBean.orderTrCode}" />
+                        
+                    <h:outputText value="Order quantity" />
+                    <h:outputText id="orderQty" value="#{ordersBean.orderQty}" />
+                        
+                    <h:outputText value="Order pr code" />
+                    <h:outputText id="orderPrCode" value="#{ordersBean.orderPrCode}" />
+                        
+                    <h:outputText value="Order debit/ credit" />
+                    <h:outputText id="orderDbCr" value="#{ordersBean.orderDbCr}" />
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+        <p:dialog header="Delete order" widgetVar="deleteDialog" appendTo="@(body)" modal="true" 
+                  showEffect="blind" hideEffect="explode" resizable="false">
+            <p:outputPanel id="deletePanel" style="text-align:center;">
+                <p:panelGrid  columns="2" rendered="#{not empty ordersBean.selectedOrder}" columnClasses="label,value">
+                    <f:facet name="header">
+                        <h:outputText value="Are you sure?" />
+                    </f:facet>
+                    <h:outputText value="Code" />
+                    <h:outputText value="#{ordersBean.selectedOrder.ordercode}" />
+
+                    <h:outputText value="Name" />
+                    <h:outputText value="#{ordersBean.selectedOrder.orderSrc}" />
+
+                    <h:outputText value="Description" />
+                    <h:outputText value="#{ordersBean.selectedOrder.orderDest}"/>
+                </p:panelGrid>
+                <p:commandButton id="btnDelete" update=":mainForm:ordersTable" oncomplete="PF('deleteDialog').hide();" value="Delete?" icon="ui-icon-circle-check" actionListener="#{ordersBean.delete}"  />
+                <p:blockUI block=":deletePanel" trigger=":btnDelete">
+                    LOADING<br />
+                    <p:graphicImage name="./images/45.gif" />
+                </p:blockUI>
+            </p:outputPanel>
+        </p:dialog>
+        
+    </ui:define>
+    
+
+
+
+</ui:composition>
