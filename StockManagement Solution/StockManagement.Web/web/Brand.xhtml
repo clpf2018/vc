@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./master/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <ui:define name="content">
+        <h:form id="form">
+
+            <p:dataTable id="brandTable" value="#{brandBean.brands}" var="itemBrand" paginator="true" rows="10" 
+
+                         rowsPerPageTemplate="5,10,20"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">  
+                <f:facet name="header">  
+                    <div align="left">	
+                        <p:commandButton onclick="PF('newDialog').show();" type="button" value="New" icon="ui-icon-plus"  />
+                    </div>
+                </f:facet> 
+
+                <p:column headerText="Code">${itemBrand.brdCode}</p:column>
+                <p:column headerText="Name">${itemBrand.brdName}</p:column>
+                <p:column headerText="Date">${itemBrand.brdCreationDate}</p:column>
+                <p:column headerText="Status">${itemBrand.brdStatus}</p:column>
+                
+            </p:dataTable>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>
