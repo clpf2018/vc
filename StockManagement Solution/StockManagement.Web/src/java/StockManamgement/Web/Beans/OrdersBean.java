@@ -165,7 +165,7 @@ public class OrdersBean implements Serializable {
         this.service = service;
     }
 
-    public void add() {
+    public void add() {  
         Order o = new Order();
         Company c = new Company();
         
