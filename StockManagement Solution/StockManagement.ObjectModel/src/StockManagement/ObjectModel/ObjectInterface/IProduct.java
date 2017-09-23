@@ -10,6 +10,7 @@ import StockManagement.ObjectModel.ValueObject.Stock;
 import StockManagement.ObjectModel.Utilities.StatusEnum;
 import StockManagement.ObjectModel.ValueObject.Branch;
 import StockManagement.ObjectModel.ValueObject.BranchProduct;
+import StockManagement.ObjectModel.ValueObject.Brand;
 import StockManagement.ObjectModel.ValueObject.StockProduct;
 import java.util.List;
 
@@ -24,9 +25,11 @@ public interface IProduct {
     public List<Product> getByType(int prType);
     public List<Product> getAll(StatusEnum status);
     public List<Product> getBySupplier(int supCode);
+    public List<Product> getByStock(int stkCode);
+    public List<StockProduct> getStockProductByStock(int stkCode);
     public List<Product> getByBrand(int brdCode);
     public List<Product> getByBranch(int brCode);
-    
+    public List<Brand> getAllBrands();
     public int add(Product product);
     public boolean addToStock(StockProduct stockproduct);
     public boolean addToStock(Product product,Stock stock,int qty);
@@ -36,5 +39,5 @@ public interface IProduct {
     public boolean delete(Product product);
     public boolean delete(int prCode);
     public boolean update(Product product);
-    
+    public Stock getStock(int stkCode);
 }
