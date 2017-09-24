@@ -1,11 +1,32 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/chira/OneDrive/Documents/NetBeansProjects/VC%20projects/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ValueObject/Client.hbm.xml</file>
-            <file>file:/C:/Users/chira/OneDrive/Documents/NetBeansProjects/VC%20projects/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ValueObject/Client.java</file>
-            <file>file:/C:/Users/chira/OneDrive/Documents/NetBeansProjects/VC%20projects/StockManagement.ObjectModel/src/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/chira/OneDrive/Documents/GitHub/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ObjectInterface/IAction.java</file>
+            <file>file:/C:/Users/chira/OneDrive/Documents/GitHub/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/MangeObject/CompanyController.java</file>
+            <file>file:/C:/Users/chira/OneDrive/Documents/GitHub/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/MangeObject/ActionController.java</file>
+            <file>file:/C:/Users/chira/OneDrive/Documents/GitHub/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/MangeObject/ProductController.java</file>
+            <file>file:/C:/Users/chira/OneDrive/Documents/GitHub/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ObjectInterface/IClient.java</file>
+            <file>file:/C:/Users/chira/OneDrive/Documents/GitHub/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/MangeObject/ClientController.java</file>
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/workspaces/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ObjectInterface/IProduct.java</file>
+            <file>file:/D:/workspaces/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ObjectInterface/ICompany.java</file>
+            <file>file:/D:/workspaces/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ObjectInterface/ISupplier.java</file>
+            <file>file:/D:/workspaces/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ValueObject/Supplier.hbm.xml</file>
+            <file>file:/D:/workspaces/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/MangeObject/SupplierController.java</file>
+            <file>file:/D:/workspaces/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ValueObject/Supplier.java</file>
+            <file>file:/D:/workspaces/vc/StockManagement%20Solution/StockManagement.ObjectModel/src/StockManagement/ObjectModel/ValueObject/Brand.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> origin/master
