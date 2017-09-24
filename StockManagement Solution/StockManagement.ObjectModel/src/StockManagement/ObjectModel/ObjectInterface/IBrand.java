@@ -14,11 +14,11 @@ import java.util.List;
  */
 public interface IBrand {
 
-    public Brand get(int brdCode);
+    public Brand get(Integer brdCode);
 
     public List<Brand> getAll();
 
-    public List<Product> getProducts(int brdCode);
+    public List<Product> getProducts(Integer brdCode);
             
     public int add(Brand brand);
 
@@ -26,15 +26,15 @@ public interface IBrand {
 
     public boolean delete(Brand brand);
 
-    public boolean delete(int brdCode);
+    public boolean delete(Integer brdCode);
 
     public int addProduct(Product product);
 
-    public int addProduct(int brdCode, Product product);
+    public int addProduct(Integer brdCode, Product product);
 
     public boolean deleteProduct(Product product);
 
-    public boolean deleteProduct(int prCode);
+    public boolean deleteProduct(Integer prCode);
 
     public boolean updateProduct(Product product);
 }
