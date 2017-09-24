@@ -68,18 +68,18 @@ public class BrandController implements IBrand {
             throw (e);
         } 
     }
-
     @Override
-    public boolean delete(Brand brand) {
+    public boolean delete(int brandCode) {
            try {
             Transaction tx = _session.beginTransaction();
-            _session.delete(brand);
+           _session.createQuery("delete from Brand where BrdCode= " + brandCode).executeUpdate();
             tx.commit();
             return true;
         } catch (Exception e) {
             throw (e);
         } 
     }
+   
 
     @Override
     public List<Product> getProducts(Integer brdCode) {
@@ -89,17 +89,7 @@ public class BrandController implements IBrand {
         }
         return products;
     }
-    
-    public boolean delete(Integer brdCode) {
-        try {
-            Transaction tx = _session.beginTransaction();
-            _session.createQuery("delete from Brand where BrdCode= " + brdCode).executeUpdate();
-            tx.commit();
-            return true;
-        } catch (Exception e) {
-            throw (e);
-        }
-    }
+   
 
     @Override
     public int addProduct(Product product) {

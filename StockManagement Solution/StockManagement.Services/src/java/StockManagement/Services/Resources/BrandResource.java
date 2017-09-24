@@ -43,7 +43,7 @@ public class BrandResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("/add")
     public int add(Brand brand) {
         return _controller.add(brand);
@@ -51,20 +51,21 @@ public class BrandResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("/update")
     public boolean update(Brand brand) {
         return _controller.update(brand);
     }
 
-//    @PUT
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("/delete")
-//    public boolean delete(Brand brand) {
-//        return _controller.delete(brand);
-//    }
-//
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/delete")
+    public boolean delete(int brandCode) {
+        return _controller.delete(brandCode);
+    }
+    
+       
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes(MediaType.APPLICATION_JSON)

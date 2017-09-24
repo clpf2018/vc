@@ -8,11 +8,13 @@ package StockManamgement.Web.Beans;
 import StockManagement.ObjectModel.ValueObject.Brand;
 import StockManagement.Services.brandClient;
 import StockManamgement.Web.Utilities.MessageView;
+import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.GenericType;
 
@@ -21,8 +23,8 @@ import javax.ws.rs.core.GenericType;
  * @author MikeRmaily
  */
 @ManagedBean(name = "brandBean")
-@RequestScoped
-public class BrandBean {
+@ViewScoped
+public class BrandBean implements Serializable {
 
     private String BrandName;
     private Integer BrandCode;
@@ -47,7 +49,7 @@ public class BrandBean {
     private List<Brand> brands;
 
     @ManagedProperty("#{brandClient}")
-    private brandClient service;
+     private transient brandClient service;
 
     @PostConstruct
     public void init() {
@@ -65,14 +67,11 @@ public class BrandBean {
     }
 
     public void add() {
-
         Brand newBrand = new Brand();
         newBrand.setBrdName(getBrandName());
         newBrand.setBrdCode(getBrandCode());
         newBrand.setBrdStatus(true);
-        String localDate = null;
-        java.util.Date date = java.sql.Date.valueOf(localDate);
-        newBrand.setBrdCreationDate(date);
+        newBrand.setBrdCreationDate(Calendar.getInstance().getTime());
         service.add(newBrand, String.class);
         refreshData();
         MessageView.Info("Info", "Brand saved successfully.");
@@ -97,7 +96,7 @@ public class BrandBean {
      */
     public void setSelectedBrand(Brand selectedBrand) {
         this.selectedBrand = selectedBrand;
-                HttpSession session = SessionUtils.getSession();
+        HttpSession session = SessionUtils.getSession();
         session.setAttribute("selectedBrand", selectedBrand);
     }
     public void update() {
@@ -105,11 +104,10 @@ public class BrandBean {
         refreshData();
         MessageView.Info("Info", "Brand updated successfully.");
     }
-    
+     
         public void delete() {
         service.delete(selectedBrand.getBrdCode(), String.class);
         refreshData();
         MessageView.Info("Info", "Brand " + selectedBrand.getBrdName()+ " deleted successfully.");
     }
-
 }

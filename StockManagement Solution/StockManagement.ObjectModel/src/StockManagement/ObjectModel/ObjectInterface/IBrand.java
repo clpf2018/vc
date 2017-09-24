@@ -24,9 +24,9 @@ public interface IBrand {
 
     public boolean update(Brand brand);
 
-    public boolean delete(Brand brand);
 
-    public boolean delete(Integer brdCode);
+
+    public boolean delete(int brdCode);
 
     public int addProduct(Product product);
 
