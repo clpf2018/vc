@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.GenericType;
 
 /**
@@ -24,7 +24,24 @@ import javax.ws.rs.core.GenericType;
 @RequestScoped
 public class BrandBean {
 
-    private Brand newBrand;
+    private String BrandName;
+    private Integer BrandCode;
+
+    public String getBrandName() {
+        return BrandName;
+    }
+
+    public void setBrandName(String BrandName) {
+        this.BrandName = BrandName;
+    }
+
+    public Integer getBrandCode() {
+        return BrandCode;
+    }
+
+    public void setBrandCode(Integer BrandCode) {
+        this.BrandCode = BrandCode;
+    }
 
     private Brand selectedBrand;
     private List<Brand> brands;
@@ -49,10 +66,16 @@ public class BrandBean {
 
     public void add() {
 
+        Brand newBrand = new Brand();
+        newBrand.setBrdName(getBrandName());
+        newBrand.setBrdCode(getBrandCode());
+        newBrand.setBrdStatus(true);
+        String localDate = null;
+        java.util.Date date = java.sql.Date.valueOf(localDate);
+        newBrand.setBrdCreationDate(date);
         service.add(newBrand, String.class);
         refreshData();
         MessageView.Info("Info", "Brand saved successfully.");
-        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Company saved succesfully.."));
     }
 
     /**
@@ -74,20 +97,19 @@ public class BrandBean {
      */
     public void setSelectedBrand(Brand selectedBrand) {
         this.selectedBrand = selectedBrand;
+                HttpSession session = SessionUtils.getSession();
+        session.setAttribute("selectedBrand", selectedBrand);
     }
-
-    /**
-     * @return the newBrand
-     */
-    public Brand getNewBrand() {
-        return newBrand;
+    public void update() {
+        service.update(selectedBrand, String.class);
+        refreshData();
+        MessageView.Info("Info", "Brand updated successfully.");
     }
-
-    /**
-     * @param newBrand the newBrand to set
-     */
-    public void setNewBrand(Brand newBrand) {
-        this.newBrand = newBrand;
+    
+        public void delete() {
+        service.delete(selectedBrand.getBrdCode(), String.class);
+        refreshData();
+        MessageView.Info("Info", "Brand " + selectedBrand.getBrdName()+ " deleted successfully.");
     }
 
 }

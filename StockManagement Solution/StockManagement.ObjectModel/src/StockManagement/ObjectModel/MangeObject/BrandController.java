@@ -28,7 +28,7 @@ public class BrandController implements IBrand {
     }
 
     @Override
-    public Brand get(int brCode) {
+    public Brand get(Integer brCode) {
         Object objBranch = _session.get(Brand.class, brCode);
         if (null == objBranch) {
             return null;
@@ -82,7 +82,7 @@ public class BrandController implements IBrand {
     }
 
     @Override
-    public List<Product> getProducts(int brdCode) {
+    public List<Product> getProducts(Integer brdCode) {
         List<Product> products = _session.createQuery("From Product where BrdCode = "+brdCode).list();
         if (null == products || products.isEmpty()) {
             return null;
@@ -90,8 +90,7 @@ public class BrandController implements IBrand {
         return products;
     }
     
-    @Override
-    public boolean delete(int brdCode) {
+    public boolean delete(Integer brdCode) {
         try {
             Transaction tx = _session.beginTransaction();
             _session.createQuery("delete from Brand where BrdCode= " + brdCode).executeUpdate();
@@ -110,8 +109,7 @@ public class BrandController implements IBrand {
         return controller.add(product);
     }
 
-    @Override
-    public int addProduct(int brdCode, Product product) {
+    public int addProduct(Integer brdCode, Product product) {
         Brand brd = get(brdCode);
         if ( null == brd)
             return -1;
@@ -126,8 +124,7 @@ public class BrandController implements IBrand {
         return controller.delete(product);
     }
 
-    @Override
-    public boolean deleteProduct(int prCode) { 
+    public boolean deleteProduct(Integer prCode) { 
         ProductController controller = new ProductController();
         return controller.delete(prCode);
     }

@@ -6,10 +6,10 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
   <ui:define name="content">
-        <h:form id="form">
+        <h:form id="mainForm">
 
-            <p:dataTable id="brandTable" value="#{brandBean.brands}" var="itemBrand" paginator="true" rows="10" 
-
+            <p:dataTable id="BrandTable" value="#{brandBean.brands}" var="itemBrand" paginator="true" rows="10" 
+                          selectionMode="single" selection="#{brandBean.selectedBrand}" rowKey="#{itemBrand.brdCode}"
                          rowsPerPageTemplate="5,10,20"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">  
                 <f:facet name="header">  
@@ -23,9 +23,133 @@
                 <p:column headerText="Date">${itemBrand.brdCreationDate}</p:column>
                 <p:column headerText="Status">${itemBrand.brdStatus}</p:column>
                 
+             <p:column style="width:32px;text-align: center">
+
+                    <p:commandButton update=":pnlInfo" oncomplete="PF('infoDialog').show()" icon="ui-icon-search" title="View">
+                        <f:setPropertyActionListener  value="#{itemBrand}" target="#{brandBean.selectedBrand}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":formUpdate:editPanel" icon="ui-icon ui-icon-pencil" oncomplete="PF('editDialog').show()" title="Edit Brand">
+                        <f:setPropertyActionListener value="#{itemBrand}" target="#{brandBean.selectedBrand}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":deletePanel" icon="ui-icon-trash" oncomplete="PF('deleteDialog').show()" title="Delete Brand">
+                        <f:setPropertyActionListener value="#{itemBrand}" target="#{brandBean.selectedBrand}" />
+                    </p:commandButton>
+                </p:column>               
             </p:dataTable>
-
+  <p:blockUI block=":mainForm:BrandTable" trigger=":mainForm:BrandTable">
+                LOADING<br />
+                <p:graphicImage name="./images/45.gif" />
+            </p:blockUI>
         </h:form>
-    </ui:define>
+      
+        <p:dialog  header="New Brand" widgetVar="newDialog" appendTo="@(body)" modal="true" height="120" resizable="false">
+            <h:form id="formAdd">  <p:outputPanel id="newPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value" >
+                        <h:outputText value="Name" />
+                        <p:inputText id="BrandName" value="#{brandBean.brandName}" />
 
+                        <h:outputText value="Code" />
+                        <p:inputText id="brandCode" value="#{brandBean.brandCode}" />
+                    </p:panelGrid>
+                    <p:commandButton id="btnAdd" update=":mainForm:BrandTable" oncomplete="PF('newDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{brandBean.add}"  />
+                    <p:blockUI block=":formAdd:newPanel" trigger=":formAdd:btnAdd">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+        <p:dialog header="Edit Brand" widgetVar="editDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <h:form id="formUpdate"> 
+                <p:outputPanel id="editPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{brandBean.selectedBrand != null}"  columnClasses="label,value">
+                        <h:outputText value="Code" />
+                        <p:inputText id="editBrandCode" value="#{brandBean.selectedBrand.brdCode}" />
+
+                        <h:outputText value="Name" />
+                        <p:inputText id="editBrandName" value="#{brandBean.selectedBrand.brdName}" />
+
+                        <h:outputText value="Status" />
+                        <p:inputText id="editBrandStatus" value="#{brandBean.selectedBrand.brdStatus}" />
+
+                    </p:panelGrid>
+
+                    <p:commandButton  id="btnUpdate" update=":mainForm:BrandTable" oncomplete="PF('editDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{brandBean.update}"  />
+                    <p:blockUI block=":formUpdate:editPanel" trigger=":formUpdate:btnUpdate">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog> 
+        <p:dialog header="Brand Info" widgetVar="infoDialog" appendTo="@(body)" modal="true" 
+                  showEffect="blind" hideEffect="explode" resizable="false">
+            <p:outputPanel id="pnlInfo" style="text-align:center;">
+                <p:panelGrid  columns="2" rendered="#{not empty brandBean.selectedBrand}" columnClasses="label,value">
+                    <f:facet name="header">
+                        <h:outputText value="Brand" />
+                    </f:facet>
+                    <h:outputText value="Code" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdCode}" />
+
+                    <h:outputText value="Name" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdName}" />
+
+                    <h:outputText value="Status" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdStatus}"/>
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+        <p:dialog header="Delete Brand" widgetVar="deleteDialog" appendTo="@(body)" modal="true" 
+                  showEffect="blind" hideEffect="explode" resizable="false">
+            <p:outputPanel id="deletePanel" style="text-align:center;">
+                <p:panelGrid  columns="2" rendered="#{not empty brandBean.selectedBrand}" columnClasses="label,value">
+                    <f:facet name="header">
+                        <h:outputText value="Are you sure you want to delete this Brand?" />
+                    </f:facet>
+                    <h:outputText value="Code" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdCode}" />
+
+                    <h:outputText value="Name" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdName}" />
+
+                    <h:outputText value="Status" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdStatus}"/>
+                </p:panelGrid>
+                <p:commandButton id="btnDelete" update=":mainForm:BrandTable" oncomplete="PF('deleteDialog').hide();" value="Delete?" icon="ui-icon-circle-check" actionListener="#{brandBean.delete}"  />
+                <p:blockUI block=":deletePanel" trigger=":btnDelete">
+                    LOADING<br />
+                    <p:graphicImage name="./images/45.gif" />
+                </p:blockUI>
+            </p:outputPanel>
+        </p:dialog>
+     <p:dialog  header="New brand" widgetVar="newBrandDialog" appendTo="@(body)" modal="true" height="150" resizable="false">
+            <h:form id="formNewBrand">
+                <p:outputPanel id="newBrandPanel" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+                      <h:outputText value="Code" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdCode}" />
+
+                    <h:outputText value="Name" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdName}" />
+
+                    <h:outputText value="Status" />
+                    <h:outputText value="#{brandBean.selectedBrand.brdStatus}"/>
+
+                    </p:panelGrid>
+                    <p:commandButton id="btnAddBrand" update=":mainForm:BrandTable" oncomplete="PF('newBrandDialog').hide();" value="Save" icon="ui-icon-circle-check" actionListener="#{brandBean.add}"  />
+                    <p:blockUI block=":formNewBrand:newBrandPanel" trigger=":formNewBrand:btnAddBrand">
+                        LOADING<br />
+                        <p:graphicImage name="./images/45.gif" />
+                    </p:blockUI>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+      
+    </ui:define>
+    
 </ui:composition>
