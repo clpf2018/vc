@@ -17,7 +17,6 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Chiraze Haidar
  */
-
 @Path("Client")
 public class ClientResource 
 {
@@ -49,7 +48,7 @@ public class ClientResource
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("/add")
     public int add(Client client) 
     {
@@ -58,26 +57,17 @@ public class ClientResource
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("/update")
     public boolean update(Client client) 
     {
         return _controller.update(client);
     }
-
+   
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("/delete")
-    public boolean delete(Client client) 
-    {
-        return _controller.delete(client);
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/deleteById")
     public boolean delete(int cltCode) 
     {
         return _controller.delete(cltCode);
@@ -136,5 +126,4 @@ public class ClientResource
     {
         return _controller.sendCatalog(cltCode);
     }
-
 }
