@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./master/loginTemplate.xhtml">
+            <f:metadata>
+                <f:viewAction action="#{userManager.isLoggedInForwardHome()}" />
+            </f:metadata>
+            <ui:define name="top">
+                
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="loginForm">
+                    <p:messages id="messages" showDetail="false" />
+                    <p:panel id="panel"  style=" text-align: center">
+                        <h:panelGrid columns="3" cellpadding="5" style=" margin: 0 auto;">
+                            <p:outputLabel for="userName" value="User Name:" />
+                            <p:inputText id="userName" value="#{userManager.username}"
+                                         required="true" label="User name">
+                                <f:validateLength minimum="3" />
+                            </p:inputText>
+                            <p:message for="userName" display="icon" />
+
+                            <p:outputLabel for="password" value="Password:" />
+                            <p:password id="password"
+                                        value="#{userManager.userPassword}" required="true"
+                                        label="Password">
+                                <f:validateLength minimum="3" />
+                            </p:password>
+                            <p:message for="password" display="icon" />
+                        </h:panelGrid>
+                        <p:commandButton id="btnLogin" update="panel messages" icon="ui-icon-disk" action="#{userManager.login()}"
+                                         value="Login" />
+                        <p:blockUI block=":loginForm:panel" trigger=":loginForm:btnLogin">
+                            LOADING<br />
+                            <p:graphicImage name="./images/45.gif" />
+                        </p:blockUI>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        
+
+        </ui:composition>
+
+    </body>
+</html>

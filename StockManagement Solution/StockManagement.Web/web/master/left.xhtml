@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+    <h:body>
+       
+        <style>
+            .ui-menu { width: 200px; }
+            .ui-widget-header { padding: 0.2em; }
+        </style>
+        <h:form>
+            <p:menu>
+                
+                    <p:menuitem value="Company management" outcome="company" icon="ui-icon-home"/>
+                    <p:menuitem value="Stock management" outcome="stock" icon="ui-icon-star"/>
+                    <p:menuitem value="Product management" outcome="product" icon="ui-icon-star"/>
+                    <p:menuitem value="Company management" outcome="company" icon="ui-icon-star"/>
+                    <p:menuitem value="Supplier management" outcome="supplier" icon="ui-icon-star"/>
+
+            </p:menu>
+        </h:form>
+
+    </h:body>
+</html>
+
